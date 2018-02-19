@@ -1,2 +1,2 @@
 # tarea
-Proyecto final de DAW, editado desde ATOM
+Proyecto final de DAW, editado desde ATOM.
