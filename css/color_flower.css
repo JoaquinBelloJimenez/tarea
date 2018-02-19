@@ -1,0 +1,83 @@
+/*summers roses Color Palette*/
+/*http://www.color-hex.com/color-palette/53128*/
+
+.color-flower1
+{color:#fff;background-color:#53546b  }
+
+.color-t-flower1
+{color:#f25c54}
+
+.color-flower2
+{color:#fff ;background-color:#2e2725}
+
+.color-flower3
+{color:#fff;background-color:#44352f}
+
+.color-flower4
+{color:#fff;background-color:#dfd5cc}
+
+.color-flower5
+{color:#fff;background-color:#baeeff}
+
+.color-b-rojo
+  {color:#fff;background-color:#ff3352}
+
+.color-b-verde
+  {color:#fff;background-color:#7ae576}
+
+.color-b-amarillo
+  {color:#fff;background-color:#eee8e4}
+
+body{
+  background-color:#99b6ba;
+  color: #888888;
+}
+
+/* DIALOGS del gracioso jquery */
+
+.modal{
+  background-color: white;
+}
+
+.ui-dialog-titlebar{
+  background-color: orange;
+  text-align: center;
+}
+
+.oculto{
+  display: none;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+    text-align: center;
+}
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+    float: none;
+}
+
+p{
+  text-align: center;
+}
+
+
+
+/* Mensajes para notificar al usuario dentro de los formularios*/
+.mensaje{
+  color: #888888;
+  height: 60px;
+}
+
+.rojo{
+  color: #f25c54;
+  font-weight: bold;
+}
+
+.mensaje, .rojo{
+  line-height: 40px;
+  text-align: center;
+  background-color: white;
+}
+
+/* TABLE */
+.w3-striped tbody tr:nth-child(even){background-color:#dfd5cc}
+.w3-striped tbody tr:nth-child(odd){background-color:#eee8e4}
