@@ -78,6 +78,10 @@ p{
   background-color: white;
 }
 
+#cuerpo{
+  margin-top: 100px;
+}
+
 /* TABLE */
 .w3-striped tbody tr:nth-child(even){background-color:#dfd5cc}
 .w3-striped tbody tr:nth-child(odd){background-color:#eee8e4}

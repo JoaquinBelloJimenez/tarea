@@ -1,10 +1,9 @@
 <?php
   //Tomar datos inicio en base de datos
-  require_once "datos_bd.php";
+  require_once "constantes/datos_bd.php";
 
-  class yemi_bd
+  class tarea_bd
   {
-    private $basedatos;
 
     function __construct(){
       try{
@@ -14,10 +13,13 @@
       }
     }
 
-    public function sentencia($sql){
-      $reg = $this->basedatos->query($sql); //Ejecuta la sentencia
-      return $reg; //Devuelve el resultado de la sentencia
-    }
+    public function sentencia($presql,$datos){
+      //Asegurar cadena escapada
+      $sql = $this->basedatos->prepare($presql); //Prepara la sentencia para evitar errores
+      $sql->execute($datos);
+      //Devolver los datos
+      return $sql;
   }
+}
 
  ?>

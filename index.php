@@ -1,6 +1,6 @@
 <?php
   //Requires
-  require 'elementos/bd.php';
+  require_once 'oad/funciones_oad.php';
   //iniciar sesión
   session_start();
 
@@ -13,23 +13,32 @@
     $usuario = $_GET['usuario'];
     $contrasenia = $_GET['contrasenia'];
 
-    //Conectar a la base de datos
-    $conexionbd = new yemi_bd();
-    // Comprobar el usuario y contraseña
-    $sql  = "SELECT * FROM usuarios WHERE nombre='$usuario' AND contrasenia='$contrasenia';";
-    $reg = $conexionbd->sentencia($sql);
-    $datos = $reg->fetch(); //Obtener datos del usuario
-    $_SESSION["idUsuario"] = $datos[0];
+    //Generar la sentencia sql
+    $sql = datos_select("*","usuarios","nombre=? AND contrasenia=?");
+    //Mandar la sentencia sql
+    $reg = datos_ejecutar($sql,$usuario,$contrasenia);
 
     // Si el usuario y contraseña son correctos
     if ($reg->rowCount()) {
-      header("location:tareas.php");
+      //Obtener el ID del usuario y comprobar si es admin
+      $datos = $reg->fetch();
+
+
+      $_SESSION["idUsuario"] = $datos["id_usuario"];
+
+      if ($datos["tipo"] == 0) {
+        //usuario admin
+        header("location:main_admin.php");
+      }else{
+        //usuario corriente
+        header("location:main.php");
+      }
+
     } else {
       $msg2Class = "mensaje rojo";
       $msg2 = "Usuario/Contraseña erróneos";
     }
-  }
-
+  };
 
  ?>
 
@@ -37,8 +46,8 @@
  <html>
    <head>
      <meta charset="utf-8">
-     <link rel="stylesheet" href="../estilo/w3.css">
-     <link rel="stylesheet" href="../estilo/color_flower.css">
+     <link rel="stylesheet" href="css/w3.css">
+     <link rel="stylesheet" href="css/color_flower.css">
      <meta name="viewport" content="width=device-width, user-scalable=no">
      <title>Yemi_entrar</title>
    </head>
@@ -49,7 +58,7 @@
        <!-- Formulario  -->
        <div class="w3-third  w3-container">
          <div class="w3-center">
-           <img src="../img/yemi.png">
+           <img src="img/tarea.png">
          </div>
          <div class=" w3_shadow">
            <div class="w3-card-4">
