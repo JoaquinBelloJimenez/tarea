@@ -1,6 +1,8 @@
 <?php
   //Comprobar sesión
   session_start();
+  //Requires
+  require_once 'oad/funciones_oad.php';
 
   //Expulsar a los tramposos
   if (!isset($_SESSION["idUsuario"]) ) {
@@ -23,8 +25,8 @@
      <link rel="stylesheet" href="css/w3.css">
      <link rel="stylesheet" href="css/color_flower.css">
      <meta name="viewport" content="width=device-width, user-scalable=no">
-     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-     <script type="text/javascript" src="js/main.js"></script>
+    <!-- <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+     <script type="text/javascript" src="js/main.js"></script> -->
      <title>Yemi_usuario</title>
    </head>
    <body>
@@ -32,15 +34,15 @@
 
      <div id="cabecera" class="w3-top">
        <div class="w3-bar w3-card w3-large w3-border color-flower3">
-          <span class="w3-bar-item color-flower2 w3-display-middle">Bienvenid@ #Usuario</span>
+          <span class="w3-bar-item color-flower2 w3-display-middle">Bienvenid@ <?=$_SESSION["nombreUsuario"]?></span>
           <a href="?eliminar" class="w3-bar-item w3-btn w3-right color-flower1">SALIR</a>
       </div>
      </div>
-     
+
        <div id="cuerpo" class="">
          <div class="w3-container">
          <!-- Incluir el elemento -->
-         <?php include "servicios/tareas.php" ?>
+         <?php include "servicios/listas.php" ?>
        </div>
 
       </div>

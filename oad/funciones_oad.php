@@ -32,13 +32,22 @@ switch ($funcion) {
     return $sentencia_select;
   }
 
+  //Función INSERT
+  function datos_insert($donde,$que){
+    $sentencia_insert = "INSERT INTO $donde VALUES $que";
+    return $sentencia_insert;
+  }
+
   //Funcion ejecutar
   function datos_ejecutar($sql,...$datos){
     //Conectar a la base de datos
     $conexionbd = new tarea_bd();
 
     $sql = $conexionbd->sentencia($sql,$datos);
+
     return $sql;
+
+    $conexionbd = "";
   }
 
 

@@ -1,30 +1,42 @@
+<?php
+
+  //Obtener las listas
+  $sql = datos_select("ltu.*"," listatarea_usuario ltu, usuarios u"," u.id_usuario = ltu.id_usuario AND u.id_usuario = 10 ");
+  $reg = datos_ejecutar($sql);
+  //Sacar el nombre de la lista
+  $sql2 = datos_select("l.*,u.nombre ", "usuarios u, listas l, lista_tareas lt", "l.id_lista = lt.id_lista AND lt.id_listatarea = 1");
+  $reg2 = datos_ejecutar($sql2);
+
+  //SELECT ltu.* FROM listatarea_usuario ltu, usuarios u WHERE u.id_usuario = ltu.id_usuario
+
+  //SELECT l.* FROM listas l, lista_tareas lt WHERE l.id_lista = lt.id_lista AND lt.id_listatarea = 1
+
+
+  $listar = $reg2->fetch(PDO::FETCH_ASSOC);
+  print_r($listar);
+ ?>
+
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>seccion_opcion</title>
-    <link rel="stylesheet" href="../estilo/w3.css">
-
-    <style media="screen">
-      .opciones{
-        margin-top: 8%;
-        width:80%;
-        text-align:center;
-      }
-      .opcion{
-        width: 50%;
-        /*transition: all 5s;*/
-      }
     </style>
-    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
   </head>
   <body>
-    <div class="w3-display-container w3-padding-64">
-      <div class="w3-display-middle opciones">
-        <div class="w3-panel w3-red">
-          <h2 class="w3-opacity">Estás editando listas</h2>
+        <div class="w3-panel color-flower1">
+          <h2>Tus listas de tareas</h2>
         </div>
-      </div>
-    </div>
+
+          <div class="w3-card w3-third">
+            <div class="w3-container color-flower3">
+              <h1><?=$listar["nombre"]?></h1>
+            </div>
+
+            <div class="w3-container w3-white">
+              <p>Administrado: fulanito</p>
+            </div>
+          </div>
   </body>
 </html>

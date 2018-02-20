@@ -1,8 +1,6 @@
 <?php
   //Requires
   require_once 'oad/funciones_oad.php';
-  //iniciar sesión
-  session_start();
 
   //Mensaje para mostrar al usuario
   $msg2 = "";
@@ -20,11 +18,14 @@
 
     // Si el usuario y contraseña son correctos
     if ($reg->rowCount()) {
+      //iniciar sesión
+      session_start();
+
       //Obtener el ID del usuario y comprobar si es admin
       $datos = $reg->fetch();
 
-
       $_SESSION["idUsuario"] = $datos["id_usuario"];
+      $_SESSION["nombreUsuario"] = $datos["nombre"];
 
       if ($datos["tipo"] == 0) {
         //usuario admin
@@ -74,7 +75,7 @@
                <h3><input class="w3-btn color-flower2 w3-col" type="submit" value="ENTRAR"></h3>
             </form>
             <div class="mensaje w3-container">
-              ¿Nuevo aquí? Regístrate en este <a class="color-t-flower1" href='nuevousuario.php'>enlace</a>
+              ¿Nuevo aquí? Regístrate en este <a class="color-t-flower1" href='nuevo_usuario.php'>enlace</a>
             </div>
             <div class="<?= $msg2Class ?> w3-container color-t-flower1">
               <?= $msg2 ?>
@@ -86,7 +87,7 @@
 
      <div id="pie"></div>
 
-     <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-     <script type="text/javascript" src="../js/tareas.js"></script>
+     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+     <script type="text/javascript" src="js/tareas.js"></script>
    </body>
  </html>
