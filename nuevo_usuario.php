@@ -17,7 +17,7 @@
 
       if ($contrasenia == $recontras) {
         //Comprobar si el usuario existe
-        $sql = datos_select("*","usuarios","?");
+        $sql = datos_select("*","usuarios","WHERE ?");
         $reg = datos_ejecutar($sql,$usuario);
 
         // Si el usuario ya existe

@@ -1,19 +1,12 @@
 <?php
+  //Id del usuario
+  $id_usuario = $_SESSION['idUsuario'];
 
   //Obtener las listas
-  $sql = datos_select("ltu.*"," listatarea_usuario ltu, usuarios u"," u.id_usuario = ltu.id_usuario AND u.id_usuario = 10 ");
-  $reg = datos_ejecutar($sql);
-  //Sacar el nombre de la lista
-  $sql2 = datos_select("l.*,u.nombre ", "usuarios u, listas l, lista_tareas lt", "l.id_lista = lt.id_lista AND lt.id_listatarea = 1");
-  $reg2 = datos_ejecutar($sql2);
+  $sql = datos_select("t.*, tu.completada"," tarea_usuario tu, tareas t","WHERE tu.id_usuario = ? AND t.id_tarea = tu.id_tarea ");
+  $reg = datos_ejecutar($sql,$id_usuario);
 
-  //SELECT ltu.* FROM listatarea_usuario ltu, usuarios u WHERE u.id_usuario = ltu.id_usuario
-
-  //SELECT l.* FROM listas l, lista_tareas lt WHERE l.id_lista = lt.id_lista AND lt.id_listatarea = 1
-
-
-  $listar = $reg2->fetch(PDO::FETCH_ASSOC);
-  print_r($listar);
+  $clase_color = "color-flower3";
  ?>
 
 
@@ -26,17 +19,25 @@
   </head>
   <body>
         <div class="w3-panel color-flower1">
-          <h2>Tus listas de tareas</h2>
+          <h2>Tu lista de tareas</h2>
         </div>
-
-          <div class="w3-card w3-third">
-            <div class="w3-container color-flower3">
-              <h1><?=$listar["nombre"]?></h1>
+        <div>
+        <?php   while ($tarea = $reg->fetch(PDO::FETCH_ASSOC)) {
+          //Intercalar colores
+          $clase_color = ($clase_color == "color-flower3") ? "color-flower4" : "color-flower3";
+          ?>
+          <div class="w3-card w3-quarter">
+            <div class="w3-center w3-container <?=$clase_color?>">
+              <h1><?=$tarea["nombre_tarea"]?></h1>
             </div>
-
-            <div class="w3-container w3-white">
-              <p>Administrado: fulanito</p>
-            </div>
+            <div class="w3-container w3-white w3-xlarge mio-descripcion">
+              <?=$tarea["desc_tarea"]?>
           </div>
+          <div class="w3-xlarge">
+            <div class="w3-white">Estado:<?=$tarea["completada"]?></div>
+          </div>
+          </div>
+          <?php } ?>
+        </div>
   </body>
 </html>

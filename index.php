@@ -12,7 +12,7 @@
     $contrasenia = $_GET['contrasenia'];
 
     //Generar la sentencia sql
-    $sql = datos_select("*","usuarios","nombre=? AND contrasenia=?");
+    $sql = datos_select("*","usuarios","WHERE nombre=? AND contrasenia=?");
     //Mandar la sentencia sql
     $reg = datos_ejecutar($sql,$usuario,$contrasenia);
 

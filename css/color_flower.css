@@ -2,7 +2,7 @@
 /*http://www.color-hex.com/color-palette/53128*/
 
 .color-flower1
-{color:#fff;background-color:#53546b  }
+{color:#fff;background-color:#53546b}
 
 .color-t-flower1
 {color:#f25c54}
@@ -14,7 +14,7 @@
 {color:#fff;background-color:#44352f}
 
 .color-flower4
-{color:#fff;background-color:#dfd5cc}
+{color:#000;background-color:#dfd5cc}
 
 .color-flower5
 {color:#fff;background-color:#baeeff}
@@ -85,3 +85,6 @@ p{
 /* TABLE */
 .w3-striped tbody tr:nth-child(even){background-color:#dfd5cc}
 .w3-striped tbody tr:nth-child(odd){background-color:#eee8e4}
+
+/* CARD */
+.mio-descripcion{height: 180px;}

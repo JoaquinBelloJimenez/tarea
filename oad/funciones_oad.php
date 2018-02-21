@@ -28,7 +28,7 @@ switch ($funcion) {
 
   //Función SELECT
   function datos_select($que,$desde,$donde){
-    $sentencia_select = "SELECT $que FROM $desde WHERE $donde";
+    $sentencia_select = "SELECT $que FROM $desde $donde";
     return $sentencia_select;
   }
 
