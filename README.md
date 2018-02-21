@@ -4,12 +4,12 @@ Proyecto final de DAW
 ### ¿De qué trata?
 Es un gestor de tareas para organizar tus estudios, motivar a los peques, montar una yincana, y mucho más....
 
-###¿Cómo funciona?
+### ¿Cómo funciona?
 Los usuarios administradores crean tareas y listas a las que asocioan
 a otro usuarios del tipo normal. EÉstos últimos podrán acceder a un listado
 completo de todas las tareas, méritos, o requisitos que deban cumplir.
 
-###Muy bonito, ¿pero esto funciona?
+### Muy bonito, ¿pero esto funciona?
 Aquí comparto algunas capturas del programa en funcionamiento.
 
 "Próximamente"
