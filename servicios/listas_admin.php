@@ -19,7 +19,7 @@
 
         <table class="w3-table-all">
     <thead>
-      <tr class="w3-green">
+      <tr class="color-viridian">
         <th>Lista</th>
         <th>Nombre de tarea</th>
         <th>Descripción</th>
@@ -33,5 +33,18 @@
           </tr>
           <?php } ?>
         </table>
+
+        <div class="color-gunmetal">
+        <p>- Usuarios -</p>
+        <p><select class="color-gunmetal w3-xlarge mayus" name="">
+        <?php
+        $sql = datos_select("*","usuarios","");
+        $reg = datos_ejecutar($sql);
+
+        while ($tarea = $reg->fetch(PDO::FETCH_ASSOC)) {
+         ?>
+           <option value="<?=$tarea["id_usuario"]?>"><?=$tarea["nombre"]?></option>
+       <?php } ?>
+       </select></p></div>
   </body>
 </html>

@@ -27,15 +27,15 @@
      <meta name="viewport" content="width=device-width, user-scalable=no">
     <!-- <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
      <script type="text/javascript" src="js/main.js"></script> -->
-     <title>Yemi_usuario</title>
+     <title>Main_Admin</title>
    </head>
    <body>
 
 
      <div id="cabecera" class="w3-top">
-       <div class="w3-bar w3-card w3-large w3-border color-flower3">
-          <span class="w3-bar-item color-flower2 w3-display-middle">Bienvenid@ <?=$_SESSION["nombreUsuario"]?></span>
-          <a href="?eliminar" class="w3-bar-item w3-btn w3-right color-flower1">SALIR</a>
+       <div class="w3-bar w3-card w3-large w3-border color-viridian">
+          <span class="w3-bar-item color-gunmetal w3-display-middle">Bienvenid@ <?=$_SESSION["nombreUsuario"]?></span>
+          <a href="?eliminar" class="w3-bar-item w3-btn w3-right color-mint">SALIR</a>
       </div>
      </div>
 
