@@ -12,7 +12,17 @@ completo de todas las tareas, méritos, o requisitos que deban cumplir.
 ### Muy bonito, ¿pero esto funciona?
 Aquí comparto algunas capturas del programa en funcionamiento.
 
-"Próximamente"
+Inicio de sesión
+![tarea_iniciar_sesion](https://github.com/JoaquinBelloJimenez/tarea/blob/master/capturas/tarea_is.png)
+
+Datos mostrados usando mi API en la página de administrador
+![tarea_api](https://github.com/JoaquinBelloJimenez/tarea/blob/master/capturas/tarea_api.png)
+
+Página para crear nuevo usuario
+![tarea_nuevo_usuario](https://github.com/JoaquinBelloJimenez/tarea/blob/master/capturas/tarea_nu.png)
+
+Datos que ve un usaurio corriente
+![tarea_usuario](https://github.com/JoaquinBelloJimenez/tarea/blob/master/capturas/tarea_usuario.png)
 
 ### ¿Para cuando?
 Es mi proyecto final 2018 de 2ºDAW, antes de que finalice el curso estará listo.
