@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 22-02-2018 a las 23:10:17
+-- Tiempo de generación: 23-02-2018 a las 18:58:12
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -40,7 +40,11 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id_categoria`, `nombre_categoria`) VALUES
-(1, 'prueba');
+(1, 'prueba'),
+(3, 'animales'),
+(4, 'hogar'),
+(5, 'deporte'),
+(6, 'informacion');
 
 -- --------------------------------------------------------
 
@@ -60,9 +64,11 @@ CREATE TABLE `listas` (
 --
 
 INSERT INTO `listas` (`id_lista`, `nombre_lista`, `id_categoria`, `id_usuario`) VALUES
-(1, 'prueba', 1, 1),
+(1, 'prueba', 3, 1),
 (2, 'nueva_lista', 1, 1),
-(3, 'Ayuda', 1, 1);
+(3, 'Ayuda', 6, 1),
+(4, 'ejercicios_espalda', 5, 1),
+(5, 'tareas_casa_campo', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -181,13 +187,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `listas`
 --
 ALTER TABLE `listas`
-  MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tareas`
