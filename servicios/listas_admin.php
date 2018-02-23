@@ -1,4 +1,6 @@
 <?php
+  require_once "constantes/token.php";
+  require_once "api/index.php";
 
   $id_usuario = $_SESSION["idUsuario"];
 
@@ -16,10 +18,25 @@
     </style>
   </head>
   <body>
-
+    <!-- Obtener datos de la API -->
+    <div class="w3-row">
+    <div class="w3-third w3-container"></div>
+    <div class="color-gunmetal w3-third w3-center">
+      <h2> Últimas 5 categorías usadas </h2>
+      <?php
+      $valores = usar_api();
+      $valores2 = json_decode($valores);
+      foreach ($valores2 as $valor) { ?>
+      <div class="color-viridian w3-large mayus w3-card w3-col">
+      <h4><?= $valor ?></h4>
+      </div>
+    <?php } ?>
+    </div>
+    </div>
+    <br>
         <table class="w3-table-all">
     <thead>
-      <tr class="color-viridian">
+      <tr class="color-gunmetal">
         <th>Lista</th>
         <th>Nombre de tarea</th>
         <th>Descripción</th>
@@ -33,18 +50,5 @@
           </tr>
           <?php } ?>
         </table>
-
-        <div class="color-gunmetal">
-        <p>- Usuarios -</p>
-        <p><select class="color-gunmetal w3-xlarge mayus" name="">
-        <?php
-        $sql = datos_select("*","usuarios","");
-        $reg = datos_ejecutar($sql);
-
-        while ($tarea = $reg->fetch(PDO::FETCH_ASSOC)) {
-         ?>
-           <option value="<?=$tarea["id_usuario"]?>"><?=$tarea["nombre"]?></option>
-       <?php } ?>
-       </select></p></div>
   </body>
 </html>

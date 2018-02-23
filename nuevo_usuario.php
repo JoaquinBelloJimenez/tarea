@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="css/color_flower.css">
     <title>Crear usuario</title>
   </head>
-  <body class="color-flower5">
+  <body>
     <div class="w3-row">
 
       <div class="w3-third  w3-container"></div>
@@ -62,7 +62,7 @@
 
         <div class=" w3_shadow">
           <div class="w3-card-4">
-            <div class="w3-container color-flower1">
+            <div class="w3-container color-viridian">
               <h2>Nuevo usuario</h2>
             </div>
 
@@ -73,8 +73,8 @@
               <input class="w3-input w3-padding-16" type="number" min="0" max="1" name="tipo">
                 <label for="tipo">(0 - Admin / 1 - Normal)</label>
               <div class="w3-container w3-center w3-row w3-padding-16">
-              <h3><input class="w3-btn color-flower2 w3-half" type="submit" value="REGISTRAR">
-                <a href="index.php"><div class="w3-btn color-flower3 w3-half "> Volver</div></a>
+              <h3><input class="w3-btn color-mint w3-half" type="submit" value="REGISTRAR">
+                <a href="index.php"><div class="w3-btn color-gunmetal w3-half "> Volver</div></a>
               </h3>
             </div>
             <div class="<?= $msg2Class ?> w3-container">

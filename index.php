@@ -52,7 +52,7 @@
      <meta name="viewport" content="width=device-width, user-scalable=no">
      <title>Yemi_entrar</title>
    </head>
-   <body style="background-color:#546D64;">
+   <body>
 
      <div class="w3-row">
        <div class="w3-third  w3-container"></div>
@@ -63,16 +63,13 @@
          </div>
          <div class=" w3_shadow">
            <div class="w3-card-4">
-             <div class="w3-container color-flower2">
+             <div class="w3-container color-viridian">
                <h2>Inicio de sesión</h2>
              </div>
              <form class="w3-container w3-white">
                <input class="w3-input w3-padding-16" type="text" name="usuario" placeholder="USUARIO">
                <input class="w3-input w3-padding-16" type="password" name="contrasenia" placeholder="CONTRASEÑA">
-               <div class="w3-right w3-padding-16">
-                 <a class="color-t-flower1" href="#">¿Contraseña olvidada?</a>
-               </div>
-               <h3><input class="w3-btn color-flower2 w3-col" type="submit" value="ENTRAR"></h3>
+               <h3><input class="w3-btn w3-col color-mint" type="submit" value="ENTRAR"></h3>
             </form>
             <div class="mensaje w3-container">
               ¿Nuevo aquí? Regístrate en este <a class="color-t-flower1" href='nuevo_usuario.php'>enlace</a>
