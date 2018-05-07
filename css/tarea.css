@@ -1,0 +1,91 @@
+/*Estilos generales*/
+
+:root {
+  --color-pri: #83bf17;
+  --color-pri-light: #99ca41;
+  --color-sec: #dc5550;
+  --color-sec-light: #f15d58;
+  --color-black:#363635;
+  --color-white: white;
+  scroll-behavior: smooth;
+}
+
+body
+{margin: 0;}
+
+html, body {
+  height: 100% !important;
+}
+
+body .full-height {
+  scroll-behavior: smooth;
+  height: 100% !important;
+}
+
+/*.Completada {
+  display: none; Edita para mostrar las tareas co,pletadas o las incompletas
+}*/
+
+/*Colores en clases*/
+.color-pri
+{color:var(--color-pri);}
+.color-sec
+{color:var(--color-sec);}
+.color-black
+{color:var(--color-black);}
+.color-white
+{color:var(--color-white);}
+
+.background-color-pri
+{background-color:var(--color-pri);}
+.background-color-pri-light
+{background-color:var(--color-pri-light);}
+.background-color-sec
+{background-color:var(--color-sec);}
+.background-color-sec-light
+{background-color:var(--color-sec-light);}
+.background-color-black
+{background-color:var(--color-black);}
+.background-color-white
+{background-color:var(--color-white);}
+
+.color-hover-pri:hover
+{background-color: var(--color-pri);}
+.color-hover-sec:hover
+{background-color: var(--color-sec);}
+.color-hover-black:hover
+{background-color: var(--color-black);}
+/**/
+
+/**/
+.full-width
+{width:100%;}
+.full-height
+{height: 100%;}
+.half-height
+{min-height: 50%;}
+/**/
+.main-content{
+  padding-top: 54px;
+  overflow-y: scroll;
+}
+a
+{text-decoration:none;}
+
+.w3-margin-top-64
+{margin-top:64px;}
+.w3-round-bottom-left
+{border-radius: 0px 0px 5px 30px;}
+.w3-round-bottom
+{border-radius: 0px 0px 30px 30px;}
+.w3-round-bottom-right
+{border-radius: 0px 0px 30px 5px;}
+
+/*Cards*/
+.w3-container {
+  font-size: 18px;
+}
+
+/*Navigation*/
+.w3-bar-item
+{font-weight: bold;}

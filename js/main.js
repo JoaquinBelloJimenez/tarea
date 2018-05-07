@@ -1,3 +1,6 @@
-//Código de la web submain
+//Main de usuarios corrientes
 
-//Escoger entre Listas y Tareas
+//Seleccionar entre ver todas las tareas o ver las incompletas
+$.function(){
+  
+}

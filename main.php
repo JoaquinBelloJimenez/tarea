@@ -23,29 +23,28 @@
    <head>
      <meta charset="utf-8">
      <link rel="stylesheet" href="css/w3.css">
-     <link rel="stylesheet" href="css/color_flower.css">
+     <link rel="stylesheet" href="css/fontawesome-all.css">
+     <link rel="stylesheet" href="css/tarea.css">
      <meta name="viewport" content="width=device-width, user-scalable=no">
     <!-- <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
      <script type="text/javascript" src="js/main.js"></script> -->
-     <title>Main_Usuario</title>
+     <title>TAREA Usuario</title>
    </head>
    <body>
 
+     <div class="w3-top">
 
-     <div id="cabecera" class="w3-top">
-       <div class="w3-bar w3-card w3-large w3-border color-viridian">
-          <span class="w3-bar-item color-gunmetal w3-display-middle">Bienvenid@ <?=$_SESSION["nombreUsuario"]?></span>
-          <a href="?eliminar" class="w3-bar-item w3-btn w3-right color-mint">SALIR</a>
-      </div>
-     </div>
-
-       <div id="cuerpo" class="">
-         <div class="w3-container">
-         <!-- Incluir el elemento -->
-         <?php include "servicios/listas.php" ?>
+       <div class="w3-bar background-color-pri color-white color-hover-black w3-display-content">
+         <span class="w3-bar-item color-gunmetal w3-display-middle w3-padding-16">Tareas de <?=$_SESSION["nombreUsuario"]?></span>
+         <a href="?eliminar" class="w3-bar-item w3-btn w3-right background-color-sec w3-padding-16">SALIR</a>
        </div>
 
+     </div>
+
+
+     <div class="main-content full-height full-width">
+         <?php include_once "servicios/listas.php" ?>
       </div>
-     <div id="pie"></div>
+
    </body>
  </html>
