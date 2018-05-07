@@ -1,7 +1,7 @@
 <?php
   //Requires
   require_once 'oad/funciones_oad.php';
-
+ #hola
   //Mensaje para mostrar al usuario
   $msg2 = "";
   $msg2Class = "none";
