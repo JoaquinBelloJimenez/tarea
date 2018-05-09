@@ -20,19 +20,13 @@
      <?php   while ($tarea = $reg->fetch(PDO::FETCH_ASSOC)) { ?>
 
        <div class="s1 w3-third w3-display-container">
-         <div class="w3-card">
-           <div class="w3-container background-color-black color-white">
-             <h4><?=$tarea["nombre_lista"]?></h4>
-          </div>
-           <div class="w3-row">
-             <a href="#" class="w3-half w3-padding-64 background-color-pri w3-btn">
-                <h1><i class="fas fa-pen-square color-white"></i></h1>
-             </a>
-             <a href="#" class="w3-half background-color-sec-light w3-padding-64 w3-btn">
-               <h1><i class="fas fa-minus-square color-white"></i></h1>
-             </a>
-          </div>
-        </div>
+         <div class="w3-container w3-border-top w3-padding-16 color-white background-color-black">
+             <span style="font-size:28px;" class="w3-padding w3-hide-small"> <?= $tarea['nombre_lista'] ?>  </span>
+           <div class="w3-right">
+             <a href="#"><i class="fas fa-pen-square color-white w3-btn color-hover-pri " style="font-size:28px;"></i></a>
+             <a href="#"><i class="fas fa-minus-square color-white w3-btn color-hover-sec" style="font-size:28px;"></i></a>
+           </div>
+         </div>
       </div>
 
     <?php } ?>
