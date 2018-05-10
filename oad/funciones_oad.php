@@ -1,30 +1,6 @@
 <?php
 //Requires
-require_once 'oad/funciones_oad.php';
-require_once 'oad/base_oad.php';
-
-
-
-  //$funcion = $_POST['funcion'];
-  //$datos = $_POST['datos'];
-/*
-switch ($funcion) {
-  case 'crear':
-    $datos = $_POST['datos'];
-    crear($datos,$conexionbd);
-    include "tareas.php";
-    break;
-  case 'eliminar':
-    $id = $_POST['id'];
-    eliminar($id,$conexionbd);
-    break;
-  case 'editar':
-      $datos = $_POST['datos'];
-      editar($datos,$conexionbd);
-      break;
-} //--switch
-
-*/
+require_once 'base_oad.php';
 
   //Función SELECT
   function datos_select($que,$desde,$donde){
@@ -35,6 +11,12 @@ switch ($funcion) {
   //Función INSERT
   function datos_insert($donde,$que){
     $sentencia_insert = "INSERT INTO $donde VALUES $que";
+    return $sentencia_insert;
+  }
+
+  //Función DELETE
+  function datos_delete($desde,$donde){
+    $sentencia_insert = "DELETE FROM $desde WHERE";
     return $sentencia_insert;
   }
 

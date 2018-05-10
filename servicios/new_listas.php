@@ -3,10 +3,8 @@
   $id_usuario = $_SESSION['idUsuario'];
 
   //Obtener las listas
-  $sql = datos_select("l.id_lista, l.nombre_lista","listas l, usuarios u","WHERE l.id_usuario = u.id_usuario ORDER BY l.nombre_lista");
+  $sql = datos_select("l.id_lista, l.nombre_lista","listas l","WHERE l.id_usuario = $id_usuario");
   $reg = datos_ejecutar($sql,$id_usuario);
-
-  print_r($reg);
 ?>
 
 <div class="w3-panel w3-center full-width">
@@ -46,10 +44,21 @@
    <div id="nuevaLista" class="s1 w3-third w3-display-container">
      <div class="w3-container w3-padding-16 color-white background-color-black" onclick="nueva_lista();">
          <input type="text" class="w3-padding w3-hide-small">
-         <i class="fas fa-check-square color-white w3-btn color-hover-pri" style="font-size:28px;"></i>
+         <i class="fas fa-check-square color-white w3-btn color-hover-pri" style="font-size:28px;" onclick="crear_lista();"></i>
      </div>
   </div>
 
    </div>
 
   </div>
+
+
+  <div id="modal_eliminar" class="w3-modal">
+  <div class="w3-modal-content">
+    <div class="w3-container w3-center">
+      <span id="bt_cancelar_eliminar" class="w3-button w3-display-topright">&times;</span>
+      <h3>¿Deseas eliminar la lista?</h3>
+       <p id="bt_modal_eliminar" class="color-white background-color-sec w3-btn">ELIMINAR</p>
+    </div>
+  </div>
+</div>
