@@ -1,6 +1,6 @@
 <?php
   //Tomar datos inicio en base de datos
-  require_once "constantes/datos_bd.php";
+  require_once __DIR__."/../constantes/datos_bd.php";
 
   class tarea_bd
   {

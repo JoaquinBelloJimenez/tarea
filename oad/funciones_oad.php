@@ -1,6 +1,32 @@
 <?php
 //Requires
-require_once 'base_oad.php';
+require_once __DIR__.'/base_oad.php';
+
+//Comprobar si se envían datos desde js
+if (isset($_POST['funcion'])){
+  $funcion = $_POST['funcion'];
+
+  switch ($funcion) {
+    case 'crear':
+      $datos = $_POST['datos'];
+      crear($datos,$conexionbd);
+      include "tareas.php";
+      break;
+    case 'eliminar':
+      $id = $_POST['id'];
+      eliminar($id,$conexionbd);
+      break;
+    case 'delete':
+        $que = $_POST['que'];
+        $desde = $_POST['desde'];
+        $donde = $_POST['donde'];
+        $sentencia_delete = datos_delete($que, $desde, $donde);
+        datos_ejecutar($sentencia_delete,$que, $desde, $donde);
+        break;
+  } //--switch
+}
+
+
 
   //Función SELECT
   function datos_select($que,$desde,$donde){
@@ -15,9 +41,9 @@ require_once 'base_oad.php';
   }
 
   //Función DELETE
-  function datos_delete($desde,$donde){
-    $sentencia_insert = "DELETE FROM $desde WHERE";
-    return $sentencia_insert;
+  function datos_delete($que, $desde, $donde){
+    $sentencia_delete = "DELETE $que FROM $desde WHERE $donde";
+    return $sentencia_delete;
   }
 
   //Funcion ejecutar
@@ -27,6 +53,7 @@ require_once 'base_oad.php';
 
     $sql = $conexionbd->sentencia($sql,$datos);
 
+    print_r($sql);
     return $sql;
 
     $conexionbd = "";

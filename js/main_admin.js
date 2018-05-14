@@ -31,14 +31,15 @@ function borrar_lista(elemento) {
 
 function php_borrar(elemento) {
   //Sistema ajax para eliminar elemento
-  $.post("servicios/funciones.php",
+  $.post("oad/funciones_oad.php",
     {
-      id: elemento.name,
-      desde: "listas",
-      donde: "id_lista ="+ elemento.name,
+      que: "l",
+      desde: "listas l",
+      donde: "l.id_lista = "+ elemento.name,
       funcion: "delete",
     },
-    function(){
+    function(respuesta){
+      console.log(respuesta);
       console.log("eliminado!");
       /*$("#idlista_" + elemento.name).fadeOut("slow", function(){
         $("#idlista_" + elemento.name).remove();

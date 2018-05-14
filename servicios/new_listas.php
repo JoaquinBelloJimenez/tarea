@@ -58,6 +58,7 @@
     <div class="w3-container w3-center">
       <span id="bt_cancelar_eliminar" class="w3-button w3-display-topright">&times;</span>
       <h3>¿Deseas eliminar la lista?</h3>
+      <h4> <b>Adevertencia: </b> ¡¡Todas las tareas asociadas serán eliminadas junto a la lista!!</h4>
        <p id="bt_modal_eliminar" class="color-white background-color-sec w3-btn">ELIMINAR</p>
     </div>
   </div>

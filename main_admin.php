@@ -2,7 +2,7 @@
   //Comprobar sesión
   session_start();
   //Requires
-  require_once 'oad/funciones_oad.php';
+  require_once __DIR__.'/oad/funciones_oad.php';
 
   //Expulsar a los tramposos
   if (!isset($_SESSION["idUsuario"]) ) {
