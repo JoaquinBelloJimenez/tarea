@@ -32,22 +32,24 @@
    </head>
    <body>
 
-
      <div class="w3-top">
 
        <div class="w3-bar background-color-pri color-white color-hover-black w3-display-content">
          <span class="w3-bar-item color-gunmetal w3-display-middle w3-padding-16">Administrador <?=$_SESSION["nombreUsuario"]?></span>
-         <a href="?eliminar" class="w3-bar-item w3-btn w3-right background-color-sec w3-padding-16">SALIR</a>
-       </div>
 
+         <div class="w3-dropdown-hover w3-right">
+          <button class="w3-btn background-color-black w3-padding-16">Menú de usuario</button>
+            <div class="w3-dropdown-content w3-bar-block w3-border">
+              <a href="#" class="w3-bar-item w3-button">Ver Listas</a>
+              <a href="#" class="w3-bar-item w3-button">Editar Perfil</a>
+              <a href="?eliminar" class="w3-bar-item color-hover-sec">Cerrar Sesión</a>
+            </div>
+        </div>
+       </div>
      </div>
 
-       <div id="cuerpo" class="">
-         <div class="w3-container">
+       <div id="cuerpo" class="w3-container">
          <!-- Incluir el elemento -->
-         <?php include "servicios/new_listas.php" #include "servicios/listas_admin.php" ?>
-       </div>
-
       </div>
 
      <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>

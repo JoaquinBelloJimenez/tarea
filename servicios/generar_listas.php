@@ -1,6 +1,9 @@
 <?php
-  //Id del usuario
+
+function generar_listas(){
   $id_usuario = $_SESSION['idUsuario'];
+
+  require_once __DIR__.'/../oad/base_oad.php';
 
   //Obtener las listas
   $sql = datos_select("l.id_lista, l.nombre_lista","listas l","WHERE l.id_usuario = $id_usuario");
@@ -11,7 +14,7 @@
 </div>
 
   <div class="w3-container w3-padding w3-display">
-    <div class="w3-panel background-color-pri-light w3-center">
+    <div class="w3-panel w3-center">
     </div>
 
     <div class="w3-row-padding w3-center">
@@ -20,7 +23,7 @@
 
        <div class="s1 w3-third w3-display-container w3-margin-bottom" id="idlista_<?=$tarea['id_lista']?>">
          <div class="w3-container w3-border-top w3-padding-16 color-white background-color-black">
-             <span style="font-size:28px;" class="w3-padding w3-hide-small"> <?= $tarea['nombre_lista'] ?>  </span>
+             <span style="font-size:28px;" class="w3-padding"> <?= $tarea['nombre_lista'] ?>  </span>
            <div class="w3-right">
              <a href="#"><i class="fas fa-pen-square color-white w3-btn color-hover-pri " style="font-size:28px;"></i></a>
              <a name="<?= $tarea['id_lista'] ?>" href="#" onclick="borrar_lista(this);">
@@ -34,8 +37,8 @@
 
     <!--Botón Crear nueva lista-->
     <div id="bt_nuevaLista" class="s1 w3-third w3-display-container color-hover-black">
-      <div class="w3-container w3-border-top w3-padding-16 color-white background-color-black color-hover-pri" onclick="nueva_lista();">
-          <span style="font-size:28px;" class="w3-padding w3-hide-small"> Crear Lista </span>
+      <div class="w3-container w3-border-top w3-padding-16 color-white background-color-pri color-hover-pri" onclick="nueva_lista();">
+          <span style="font-size:28px;" class="w3-padding "> Crear Lista </span>
           <i class="fas fa-plus-square color-white" style="font-size:28px;"></i>
       </div>
    </div>
@@ -43,8 +46,8 @@
    <!--Nueva lista-->
    <div id="nuevaLista" class="s1 w3-third w3-display-container">
      <div class="w3-container w3-padding-16 color-white background-color-black" onclick="nueva_lista();">
-         <input type="text" class="w3-padding w3-hide-small">
-         <i class="fas fa-check-square color-white w3-btn color-hover-pri" style="font-size:28px;" onclick="crear_lista();"></i>
+         <input type="text" class="w3-padding ">
+         <i class="fas fa-check-square color-white w3-btn color-hover-pri" style="font-size:28px;" onclick="ver_escrito(this);"></i>
      </div>
   </div>
 
@@ -63,3 +66,5 @@
     </div>
   </div>
 </div>
+
+<?php }; ?>

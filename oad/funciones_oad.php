@@ -1,20 +1,38 @@
 <?php
 //Requires
 require_once __DIR__.'/base_oad.php';
+require_once  __DIR__.'/../servicios/generar_listas.php';
+if(!isset($_SESSION)) {
+     session_start();
+}
 
 //Comprobar si se envían datos desde js
 if (isset($_POST['funcion'])){
   $funcion = $_POST['funcion'];
+  $tipo = $_POST['tipo'] ?? "";
 
   switch ($funcion) {
-    case 'crear':
-      $datos = $_POST['datos'];
-      crear($datos,$conexionbd);
-      include "tareas.php";
+    case 'create':
+      $donde = $_POST['donde'];
+      $id = NULL;
+      $nombre = $_POST['nombre'];
+      $categoria = $_POST['categoria'];
+      $usuario = $_SESSION['idUsuario'];
+      $que = "(NULL, '$nombre', '$categoria', '$usuario')";
+
+      $sentencia_insert = datos_insert($donde,$que);
+      datos_ejecutar($sentencia_insert,$donde, $id, $nombre, $categoria, $usuario);
+      #Generar el html resultante
+      generar_listas();
       break;
-    case 'eliminar':
-      $id = $_POST['id'];
-      eliminar($id,$conexionbd);
+    case 'select':
+
+    switch($tipo){
+      case 'listas':
+        generar_listas();
+      break;
+    }
+
       break;
     case 'delete':
         $que = $_POST['que'];
@@ -53,7 +71,6 @@ if (isset($_POST['funcion'])){
 
     $sql = $conexionbd->sentencia($sql,$datos);
 
-    print_r($sql);
     return $sql;
 
     $conexionbd = "";

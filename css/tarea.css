@@ -52,7 +52,7 @@ body .full-height {
 .color-hover-pri:hover
 {background-color: var(--color-pri);}
 .color-hover-sec:hover
-{background-color: var(--color-sec);}
+{background-color: var(--color-sec); color:white;}
 .color-hover-black:hover
 {background-color: var(--color-black);}
 /**/
@@ -89,5 +89,5 @@ a
 }
 
 /*Navigation*/
-.w3-bar-item
+.w3-bar-item, button
 {font-weight: bold;}
