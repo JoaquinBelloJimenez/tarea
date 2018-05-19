@@ -91,3 +91,8 @@ a
 /*Navigation*/
 .w3-bar-item, button
 {font-weight: bold;}
+
+/*fa icons*/
+.fas {
+  font-size: 28px;
+}

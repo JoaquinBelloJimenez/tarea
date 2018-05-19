@@ -81,3 +81,15 @@ function php_borrar(elemento) {
       });*/
     });
 }
+
+//Generar los datos de tareas
+function php_tareas_select(elemento) {
+  $.post("servicios/generar_tareas_admin.php",
+  {
+    id_lista: elemento.name,
+  },
+  function(respuesta){
+    $("#modal_tareas").append(respuesta);
+    $("#modal_tareas").css("display","block");
+  });
+}
