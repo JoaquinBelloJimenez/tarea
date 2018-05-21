@@ -26,9 +26,9 @@ function generar_listas(){
              <span style="font-size:28px;" class="w3-padding"> <?= $lista['nombre_lista'] ?>  </span>
            <div class="w3-right">
              <a name="<?=$lista['id_lista']?>" href="#"  onclick="php_tareas_select(this);">
-               <i class="fas fa-pen-square color-white w3-btn color-hover-pri"></i></a>
+               <i class="fas fa-pen-square color-white w3-btn color-hover-pri w3-round"></i></a>
              <a name="<?= $lista['id_lista'] ?>" href="#" onclick="borrar_lista(this);">
-               <i class="fas fa-minus-square color-white w3-btn color-hover-sec"></i>
+               <i class="fas fa-minus-square color-white w3-btn color-hover-sec w3-round"></i>
              </a>
            </div>
          </div>

@@ -3,6 +3,25 @@
   //Cargar el php interno
   php_lista_select();
 
+
+// -- Funciones dentro de la página --
+
+  // -- Botones --
+  //Regresar a la vista de listas
+  function bt_atras_tareas() {
+      $("#modal_tareas").empty();
+      $("#modal_tareas").css("display","none");
+  }
+  //Eliminar una tarea
+  function bt_borrar_tarea(elemento) {
+      $("#bt_modal_eliminar").click( function(){
+        $("#idlista_" + elemento.name).hide();
+        $('#modal_eliminar').hide();
+        php_borrar(elemento);
+      });
+  }
+
+//Mostrar el editor para crear una nueva lista
 function nueva_lista() {
   $("#nuevaLista").show();
   $("#nuevaLista input").focus();
@@ -16,10 +35,9 @@ function borrar_lista(elemento) {
   //Al aceptar se elimina el elemento y se oculta el modal
     $("#bt_modal_eliminar").click( function(){
       //Llamar a php para eliminar el elemento de la base de datos
-
       $("#idlista_" + elemento.name).hide();
       $('#modal_eliminar').hide();
-      php_borrar(elemento);
+      php_lista_borrar(elemento);
     });
 
   //Al cancelar se limpian los valores de los botones
@@ -65,7 +83,7 @@ function php_lista_crear(nombre) {
   });
 }
 
-function php_borrar(elemento) {
+function php_lista_borrar(elemento) {
   //Sistema ajax para eliminar elemento
   $.post("oad/funciones_oad.php",
     {
