@@ -4,7 +4,7 @@
   $id_lista = $_POST['id_lista'];
 
   //Obtener las tareas
-  $sql = datos_select("*","tareas","WHERE tareas.id_lista = $id_lista");
+  $sql = datos_select("t.nombre_tarea, t.desc_tarea, u.nombre, e.valor","tarea_usuario tu JOIN tareas t ON tu.id_tarea = t.id_tarea JOIN usuarios u ON tu.id_usuario = u.id_usuario JOIN estado e ON tu.id_estado = e.id_estado","WHERE t.id_lista = $id_lista");
   $reg = datos_ejecutar($sql,$id_lista);
 
  ?>
@@ -18,12 +18,16 @@
           <tr>
             <th>Nombre</th>
             <th>Descripción</th>
+            <th>Usuario</th>
+            <th>Estado</th>
             <th>Acciones</th>
           </tr>
        <?php   while ($tarea = $reg->fetch(PDO::FETCH_ASSOC)) { ?>
          <tr>
            <td><?=$tarea['nombre_tarea']?></td>
            <td><?=$tarea['desc_tarea']?></td>
+           <td><?=$tarea['nombre']?></td>
+           <td><?=$tarea['valor']?></td>
            <td name="<?=$tarea['id_tarea']?>">
              <i class="fas fa-pen-square w3-btn color-hover-pri w3-round" onclick=""></i>
              <i class="fas fa-minus-square w3-btn color-hover-sec w3-round" onclick=""></i>
