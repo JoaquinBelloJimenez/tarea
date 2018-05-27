@@ -24,7 +24,6 @@
      <meta charset="utf-8">
      <link rel="stylesheet" href="css/w3.css">
      <link rel="stylesheet" href="css/fontawesome-all.css">
-     <link rel="stylesheet" href="css/tarea.css">
      <meta name="viewport" content="width=device-width, user-scalable=no">
     <!-- <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
      <script type="text/javascript" src="js/main.js"></script> -->

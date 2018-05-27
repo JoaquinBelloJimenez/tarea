@@ -1,7 +1,7 @@
 <?php
 //Requires
 require_once __DIR__.'/base_oad.php';
-require_once  __DIR__.'/../servicios/generar_listas.php';
+
 if(!isset($_SESSION)) {
      session_start();
 }
@@ -22,14 +22,11 @@ if (isset($_POST['funcion'])){
 
       $sentencia_insert = datos_insert($donde,$que);
       datos_ejecutar($sentencia_insert,$donde, $id, $nombre, $categoria, $usuario);
-      #Generar el html resultante
-      generar_listas();
       break;
     case 'select':
 
     switch($tipo){
       case 'listas':
-        generar_listas();
       break;
     }
 
@@ -46,19 +43,19 @@ if (isset($_POST['funcion'])){
 
 
 
-  //Función SELECT
+  //Funcion SELECT
   function datos_select($que,$desde,$donde){
     $sentencia_select = "SELECT $que FROM $desde $donde";
     return $sentencia_select;
   }
 
-  //Función INSERT
+  //Funcion INSERT
   function datos_insert($donde,$que){
     $sentencia_insert = "INSERT INTO $donde VALUES $que";
     return $sentencia_insert;
   }
 
-  //Función DELETE
+  //Funcion DELETE
   function datos_delete($que, $desde, $donde){
     $sentencia_delete = "DELETE $que FROM $desde WHERE $donde";
     return $sentencia_delete;

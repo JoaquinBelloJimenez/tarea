@@ -10,17 +10,12 @@
   scroll-behavior: smooth;
 }
 
-body
-{margin: 0;}
+
 
 html, body {
   height: 100% !important;
 }
 
-body .full-height {
-  scroll-behavior: smooth;
-  height: 100% !important;
-}
 
 /*.Completada {
   display: none; Edita para mostrar las tareas co,pletadas o las incompletas
@@ -55,44 +50,12 @@ body .full-height {
 {background-color: var(--color-sec); color:white;}
 .color-hover-black:hover
 {background-color: var(--color-black); color:white;}
-/**/
 
-/**/
-.full-width
-{width:100%;}
-.full-height
-{height: 100%;}
-.half-height
-{min-height: 50%;}
-/**/
-.main-content{
-  padding-top: 54px;
-  overflow-y: scroll;
-}
-a
-{text-decoration:none;}
-
-.w3-margin-top-64
-{margin-top:64px;}
-.w3-margin-bottom
-{margin-bottom:32px;}
-.w3-round-bottom-left
-{border-radius: 0px 0px 5px 30px;}
-.w3-round-bottom
-{border-radius: 0px 0px 30px 30px;}
-.w3-round-bottom-right
-{border-radius: 0px 0px 30px 5px;}
-
-/*Cards*/
-.w3-container {
-  font-size: 18px;
-}
-
-/*Navigation*/
-.w3-bar-item, button
-{font-weight: bold;}
-
-/*fa icons*/
-.fas {
-  font-size: 28px;
+.background-img-1 {
+  background: url("../img/img1.jpg");
+  min-height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

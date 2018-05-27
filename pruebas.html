@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>pruebas</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/w3pro.css">
+    <link rel="stylesheet" href="css/fontawesome-all.css">
+    <link rel="stylesheet" href="css/tarea.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <style media="screen">
+      body{background-color:#DAE0E6;}
+      #barra_lateral {
+        top: 49px;
+        height: 100%;
+        background-color: #fff;
+        position: fixed!important;
+        z-index: 1;
+      }
+      .lateral {
+        transition: left 0.5s;
+        left: 0px;
+      }
+      .invisible{
+        left:-300px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <!--barra superior-->
+    <div class="w3-bar w3-top background-color-white w3-border">
+        <div id="bt_menu" class="w3-bar-item color-black color-hover-black" onclick="abrirMenu()"><i class="fas fa-bars"></i></div>
+        <div class="color-black">
+          <h5> NOMBRE USUARIO</h5>
+        </div>
+    </div>
+
+    <!-- barra lateral -->
+    <div id="barra_lateral" class="w3-light-grey w3-bar-block lateral invisible">
+        <p class="w3-center">Opciones Admin</p>
+        <div class="w3-bar-item w3-buttom w3-display">
+          <a class="w3-padding w3-xlarge w3-button full-width">USUARIOS <i class="w3-right fas fa-users color-sec"></i> </a>
+        </div>
+        <div class="w3-bar-item w3-buttom w3-display">
+          <a class="w3-padding w3-xlarge w3-button full-width">TAREAS <i class="w3-right fas fa-calendar-check color-sec"></i> </a>
+        </div>
+        <div class="w3-bar-item w3-buttom w3-display">
+          <a class="w3-padding w3-button full-width" style="font-size:34px;"><i class="fas fa-list-ul color-sec" style="font-size:24px"></i> <label>Listas</label> </a>
+        </div>
+        <div class="w3-bar-item w3-buttom w3-display">
+          <a class="w3-padding w3-xlarge w3-button full-width">SALIR <i class="w3-right fas fa-sign-out-alt color-sec"></i> </a>
+        </div>
+        <div class="w3-bar-item w3-buttom w3-display" style="font-size:24px">
+          <i class="fas fa-list-ul color-sec" style="font-size:24px"></i>hola
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+    valor = 0;
+
+
+
+    function abrirMenu(){
+      $("#barra_lateral").toggleClass("invisible");
+      $("#bt_menu > i").toggleClass("fa-times");
+    };
+
+    </script>
+  </body>
+</html>

@@ -14,8 +14,6 @@
     session_destroy();
     header("location:index.php");
   }
-
-//--------------------------------
  ?>
 
  <!DOCTYPE html>
@@ -24,10 +22,8 @@
      <meta charset="utf-8">
      <link rel="stylesheet" href="css/w3pro.css">
      <link rel="stylesheet" href="css/fontawesome-all.css">
-     <link rel="stylesheet" href="css/tarea.css">
+     <link rel="stylesheet" href="css/tarea.css">     
      <meta name="viewport" content="width=device-width, user-scalable=no">
-    <!-- <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-     <script type="text/javascript" src="js/main.js"></script> -->
      <title>Main_Admin</title>
    </head>
    <body>
@@ -48,9 +44,7 @@
        </div>
      </div>
 
-       <div id="cuerpo" class="w3-container">
-         <!-- Incluir el elemento -->
-      </div>
+       <div id="cuerpo" class="w3-container"></div>
 
      <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
      <script type="text/javascript" src="js/main_admin.js"></script>
