@@ -90,8 +90,7 @@ function generar_lista(){
 </div>
 
   <!-- modal_tareas -->
-  <div id="modal_tareas" class="w3-modal">
-  </div>
+  <div id="modal_tareas" class="w3-modal"></div>
 <?php }; ?>
 
 <?php
@@ -102,7 +101,7 @@ function generar_lista(){
     $sql = datos_select("*","tareas t","WHERE t.id_lista = $id_lista");
     $reg = datos_ejecutar($sql,$id_lista);
 ?>
-<div class="w3-modal-content w3-border w3-animate-zoom">
+<div id="modal_tareas_lista" class="w3-modal-content w3-border w3-animate-zoom">
   <ul class="w3-ul w3-card-4">
     <li class="w3-bar background-color-black color-white">
         <span onclick="bt_atras_tareas();" class="w3-bar-item w3-white w3-xlarge w3-left">
@@ -114,45 +113,40 @@ function generar_lista(){
     </li>
     <?php   while ($tarea = $reg->fetch(PDO::FETCH_ASSOC)) { ?>
     <li class="w3-bar">
-      <div name="<?=$tarea['id_tarea']?>">
-        <span name="<?=$tarea['id_tarea']?>" onclick="borrar_lista_tarea(this)" class="w3-bar-item w3-white w3-xlarge w3-right">
+      <div id="<?=$tarea['id_tarea']?>">
+        <a name="<?=$tarea['id_tarea']?>" onclick="borrar_lista_tarea(this)" class="w3-bar-item w3-white w3-xlarge w3-right">
           <i class="fas fa-minus-square w3-btn"></i>
-          </span>
-        <span onclick="" class="w3-bar-item w3-white w3-xlarge w3-right">
+        </a>
+        <a onclick="editar_lista_tarea(this)" class="w3-bar-item w3-white w3-xlarge w3-right">
           <i class="fas fa-pen-square w3-btn"></i>
-          </span>
+        </a>
       </div>
       <div class="w3-bar-item">
-        <span class="w3-large"><?=$tarea['nombre_tarea']?></span><br>
-        <span><?=$tarea['desc_tarea']?></span>
+        <span id="tnombre_<?=$tarea['id_tarea']?>" class="w3-large"><?=$tarea['nombre_tarea']?></span><br>
+        <span id="tdesc_<?=$tarea['id_tarea']?>"><?=$tarea['desc_tarea']?></span>
       </div>
     </li>
     <?php }; ?>
   </ul>
 </div>
-
-<?php } ?>
-
-<?php
-function generar_tarea() {
-  $id_usuario = $_SESSION['idUsuario'];
-
-  require_once __DIR__.'/../oad/base_oad.php';
-
-  //Obtener las listas
-  $sql = datos_select("l.id_lista, l.nombre_lista","listas l","WHERE l.id_usuario = $id_usuario");
-  $reg = datos_ejecutar($sql,$id_usuario);
-
-?>
-  <div class="w3-container w3-content w3-padding-64">
-    <ul class="w3-ul w3-card-4">
-      <li class="w3-bar">
-        <div class="w3-bar-item">
-          <span class="w3-large">Título de la tarea</span><br>
-          <span>Descripción de la tarea</span>
+  <div id="modal_tareas_editar" class="w3-padding-64" style="display:none;">
+    <div class="w3-modal-content w3-border">
+      <div class="w3-container w3-center">
+        <h3>Editor la TAREA</h3>
+        <div class="w3-section">
+          <form class="w3-row" method="post">
+            <span>Título</span>
+            <input id="nueva_tnombre" class="w3-input w3-border" type="text" maxlength="20">
+            <span>Descripción</span>
+            <input id="nueva_tdesc" class="w3-input w3-border" type="text" maxlength="50">
+          </form>
         </div>
-      </li>
-    </ul>
+        <div class="w3-section">
+          <a href="#" id="bt_guardar_tarea">GuArDaR</a>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
 <?php } ?>

@@ -5,7 +5,6 @@
 
 //Menu superior (Selector de secciones)
 
-
 //Seccion de listas
 
   //Ver listas
@@ -15,11 +14,37 @@
       $("#modal_tareas").css("display","none");
   }
 
-  //Crear listas
+  //Crear / editar listas
   function nueva_lista() {
     $("#nuevaLista").show();
     $("#nuevaLista input").focus();
     $("#bt_nuevaLista").hide();
+  }
+
+  function editar_lista_tarea(elemento){
+    var id = $(elemento).parent().attr('id');
+    $('#nueva_tarea').css('display','block');
+    $('#nueva_tnombre').val($('#tnombre_' + id).text());
+    $('#nueva_tdesc').val($('#tdesc_' + id).text());
+
+    //Mostrar el editor
+    $('#modal_tareas_editar').show();
+    //Ocultar la lista
+    $("#modal_tareas_lista").hide();
+
+    //Botón de aceptar
+    $('#bt_guardar_tarea').click(function(){
+      reescrito(id);
+    });
+  }
+
+  function reescrito(id) {
+    $('#tnombre_' + id).text($('#nueva_tnombre').val());
+    $('#tdesc_' + id).text($('#nueva_tdesc').val());
+    //Ocultar el editor
+    $('#modal_tareas_editar').hide();
+    //Mostrar la lista
+    $("#modal_tareas_lista").show();
   }
 
   //Eliminar listas
@@ -37,7 +62,7 @@
     }
 
     function borrar_lista_tarea(elemento) {
-      console.log(elemento.name);
+        php_lista_tarea_borrar(elemento)
       }
 
 //Sección de listas: llamadas PHP
@@ -66,7 +91,7 @@
     });
   }
 
-  //create
+  //create / insert
   function php_lista_crear(nombre) {
     $.post("oad/funciones_oad.php",
     {
@@ -110,10 +135,7 @@
         funcion: "delete",
       },
       function(respuesta){
-        console.log("¡tarea eliminada!");
-        /*$("#idlista_" + elemento.name).fadeOut("slow", function(){
-          $("#idlista_" + elemento.name).remove();
-        });*/
+        $('#tarea_'+ elemento.name).hide();
       });
   }
 
