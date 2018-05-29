@@ -23,8 +23,14 @@ if (isset($_POST['funcion'])){
       $sentencia_insert = datos_insert($donde,$que);
       datos_ejecutar($sentencia_insert,$donde, $id, $nombre, $categoria, $usuario);
       break;
-    case 'select':
+    case 'update':
+      $donde = $_POST['donde'];
+      $que = $_POST['que'];
+      $comprueba = $_POST['comprueba'];
 
+      $sentencia_update = datos_update($donde,$que, $comprueba);
+      datos_ejecutar($sentencia_update,$donde,$que, $comprueba);
+      break;
     switch($tipo){
       case 'listas':
       break;
@@ -53,6 +59,12 @@ if (isset($_POST['funcion'])){
   function datos_insert($donde,$que){
     $sentencia_insert = "INSERT INTO $donde VALUES $que";
     return $sentencia_insert;
+  }
+
+  //Funcion UPDATE
+  function datos_update($donde,$que, $comprueba){
+    $sentencia_update = "UPDATE $donde SET $que WHERE $donde.$comprueba";
+    return $sentencia_update;
   }
 
   //Funcion DELETE

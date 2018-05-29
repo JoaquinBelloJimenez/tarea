@@ -21,6 +21,7 @@
     $("#bt_nuevaLista").hide();
   }
 
+  //Editar una tarea en la vista de listas
   function editar_lista_tarea(elemento){
     var id = $(elemento).parent().attr('id');
     $('#nueva_tarea').css('display','block');
@@ -34,17 +35,19 @@
 
     //Botón de aceptar
     $('#bt_guardar_tarea').click(function(){
-      reescrito(id);
-    });
-  }
+      var tnombre = $('#nueva_tnombre').val();
+      var tdesc = $('#nueva_tdesc').val();
+      $('#tnombre_' + id).text(tnombre);
+      $('#tdesc_' + id).text(tdesc);
+      //Ocultar el editor
+      $('#modal_tareas_editar').hide();
+      //Mostrar la lista
+      $("#modal_tareas_lista").show();
 
-  function reescrito(id) {
-    $('#tnombre_' + id).text($('#nueva_tnombre').val());
-    $('#tdesc_' + id).text($('#nueva_tdesc').val());
-    //Ocultar el editor
-    $('#modal_tareas_editar').hide();
-    //Mostrar la lista
-    $("#modal_tareas_lista").show();
+      //Llamar a la base de datos
+      php_lista_tarea_editar(tnombre, tdesc, id);
+      id = 0;
+    });
   }
 
   //Eliminar listas
@@ -104,6 +107,34 @@
     function(){
       $("#cuerpo").empty();
       php_lista_select();
+    });
+  }
+
+  function php_lista_tarea_crear(nombre) {
+    $.post("oad/funciones_oad.php",
+    {
+      funcion: "create",
+      donde: "listas",
+      nombre: nombre,
+      categoria: 1,
+      usuario: 1,
+    },
+    function(){
+      $("#cuerpo").empty();
+      php_lista_select();
+    });
+  }
+
+  function php_lista_tarea_editar(tnombre, tdesc, id) {
+    $.post("oad/funciones_oad.php",
+    {
+      funcion: "update",
+      donde: "tareas",
+      que: 'nombre_tarea ="' + tnombre + '", desc_tarea ="' + tdesc + '"',
+      comprueba: "id_tarea =" + id,
+    },
+    function(){
+      console.log("guardado en bbdd");
     });
   }
 

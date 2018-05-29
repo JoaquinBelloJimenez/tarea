@@ -122,27 +122,28 @@ function generar_lista(){
         </a>
       </div>
       <div class="w3-bar-item">
-        <span id="tnombre_<?=$tarea['id_tarea']?>" class="w3-large"><?=$tarea['nombre_tarea']?></span><br>
-        <span id="tdesc_<?=$tarea['id_tarea']?>"><?=$tarea['desc_tarea']?></span>
+        <span id="tnombre_<?=$tarea['id_tarea']?>" class="w3-large"><?=strip_tags($tarea['nombre_tarea'])?></span><br>
+        <span id="tdesc_<?=$tarea['id_tarea']?>"><?=strip_tags($tarea['desc_tarea'])?></span>
       </div>
     </li>
     <?php }; ?>
   </ul>
 </div>
-  <div id="modal_tareas_editar" class="w3-padding-64" style="display:none;">
+  <div id="modal_tareas_editar" style="display:none;">
     <div class="w3-modal-content w3-border">
-      <div class="w3-container w3-center">
-        <h3>Editor la TAREA</h3>
+      <div class="w3-container">
+        <h3 class="w3-center background-color-black color-white">Editor la TAREA</h3>
         <div class="w3-section">
-          <form class="w3-row" method="post">
+          <form method="post">
             <span>Título</span>
             <input id="nueva_tnombre" class="w3-input w3-border" type="text" maxlength="20">
             <span>Descripción</span>
             <input id="nueva_tdesc" class="w3-input w3-border" type="text" maxlength="50">
           </form>
         </div>
-        <div class="w3-section">
+        <div class="w3-section w3-center">
           <a href="#" id="bt_guardar_tarea">GuArDaR</a>
+          <a href="#" id="bt_atras_tarea">CaNcElAr</a>
         </div>
       </div>
     </div>
