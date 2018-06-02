@@ -6,10 +6,10 @@
 
   //Expulsar a los tramposos
   if (!isset($_SESSION["idUsuario"]) ) {
-    header("location:index.php");
+    header("location:login.php");
   }
 
-  //Eliminar la sesión cuando el usuario quiera
+  //Eliminar la sesión
   if (isset($_GET["eliminar"])) {
     session_destroy();
     header("location:index.php");
@@ -22,29 +22,52 @@
      <meta charset="utf-8">
      <link rel="stylesheet" href="css/w3pro.css">
      <link rel="stylesheet" href="css/fontawesome-all.css">
-     <link rel="stylesheet" href="css/tarea.css">     
+     <link rel="stylesheet" href="css/tarea.css">
      <meta name="viewport" content="width=device-width, user-scalable=no">
      <title>Main_Admin</title>
    </head>
    <body>
 
-     <div class="w3-top">
-
-       <div class="w3-bar background-color-pri color-white color-hover-black w3-display-content">
-         <span class="w3-bar-item color-gunmetal w3-display-middle w3-padding-16">Administrador <?=$_SESSION["nombreUsuario"]?></span>
-
-         <div class="w3-dropdown-hover w3-right">
-          <button class="w3-btn background-color-black w3-padding-16">Menú de usuario</button>
-            <div class="w3-dropdown-content w3-bar-block w3-border">
-              <a href="#" class="w3-bar-item w3-button">Ver Listas</a>
-              <a href="#" class="w3-bar-item w3-button">Editar Perfil</a>
-              <a href="?eliminar" class="w3-bar-item color-hover-sec">Cerrar Sesión</a>
-            </div>
-        </div>
+     <!-- menú superior para vistas en ordenador y pantallas anchas -->
+     <div class="w3-hide-small padding-bottom-64">
+       <div class="w3-bar w3-top background-color-black color-white sombra-inferior">
+         <a href="#LISTAS" class="w3-bar-item w3-btn w3-tooltip">
+           <i class="fas fa-list-alt w3-xlarge"></i>
+           <p class="w3-text w3-center w3-small">LISTAS</p>
+         </a>
+         <a href="#" class="w3-bar-item w3-btn w3-tooltip">
+           <i class="fas fa-address-card w3-xlarge"></i>
+           <p class="w3-text w3-center w3-small">USUARIOS</p>
+         </a>
+         <a href="#" class="w3-bar-item w3-btn w3-tooltip">
+           <i class="fas fa-cogs w3-xlarge"></i>
+           <p class="w3-text w3-center w3-small">CONFIGURAR</p>
+         </a>
+         <a href="?eliminar" class="w3-bar-item w3-btn w3-tooltip">
+           <i class="fas fa-sign-out-alt w3-xlarge"></i>
+           <p class="w3-text w3-center w3-small">SALIR</p>
+         </a>
        </div>
      </div>
-
-       <div id="cuerpo" class="w3-container"></div>
+     <!-- menú inferior para vistas en móviles -->
+     <div id="phoneMenu" class="w3-center w3-bottom w3-hide-medium w3-hide-large background-color-black color-white sombra-superior">
+       <div class="w3-row-padding">
+         <div class="s3 w3-btn w3-xlarge">
+           <i class="fas fa-list-alt"></i>
+         </div>
+         <div class="s3 w3-btn w3-xlarge">
+           <i class="fas fa-address-card"></i>
+         </div>
+         <div class="s3 w3-btn w3-xlarge">
+           <i class="fas fa-cogs w3-xlarge"></i>
+         </div>
+         <div class="s3 w3-btn w3-xlarge">
+           <a href="?eliminar"><i class="fas fa-sign-out-alt"></i></a>
+         </div>
+        </div>
+     </div>
+     <!-- Resto de la página de administración -->
+     <div id="cuerpo"></div>
 
      <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
      <script type="text/javascript" src="js/main_admin.js"></script>

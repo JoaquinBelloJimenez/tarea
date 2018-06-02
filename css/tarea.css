@@ -40,7 +40,7 @@ html, body {
 .background-color-sec-light
 {background-color:var(--color-sec-light);}
 .background-color-black
-{background-color:var(--color-black);}
+{background-color:var(--color-black); color:white;}
 .background-color-white
 {background-color:var(--color-white);}
 
@@ -51,6 +51,7 @@ html, body {
 .color-hover-black:hover
 {background-color: var(--color-black); color:white;}
 
+/* Index */
 .background-img-1 {
   background: url("../img/img1.jpg");
   min-height: 100%;
@@ -58,4 +59,25 @@ html, body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/* Main */
+.sombra-superior {
+  box-shadow:   0 -2px 1px var(--color-white);
+}
+
+.sombra-inferior {
+  box-shadow:   0 2px 1px var(--color-white);
+}
+
+.padding-bottom {
+  padding-bottom: 16px !important;
+}
+
+.padding-bottom-64 {
+  padding-bottom: 64px !important;
+}
+
+.border-color-white {
+  border-color: var(--color-white);
 }

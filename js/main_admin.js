@@ -3,8 +3,6 @@
   //Cargar el gestor de listas / asignador de tareas
   php_lista_select();
 
-//Menu superior (Selector de secciones)
-
 //Seccion de listas
 
   //Ver listas
