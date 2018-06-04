@@ -29,7 +29,7 @@
    <body>
 
      <!-- menú superior para vistas en ordenador y pantallas anchas -->
-     <div class="w3-hide-small padding-bottom-64">
+     <div class="w3-hide-small w3-hide-medium padding-bottom-64">
        <div class="w3-bar w3-top background-color-black color-white sombra-inferior">
          <a href="#LISTAS" class="w3-bar-item w3-btn w3-tooltip">
            <i class="fas fa-list-alt w3-xlarge"></i>
@@ -49,25 +49,25 @@
          </a>
        </div>
      </div>
+     <!-- Resto de la página de administración -->
+     <div id="cuerpo"></div>
      <!-- menú inferior para vistas en móviles -->
-     <div id="phoneMenu" class="w3-center w3-bottom w3-hide-medium w3-hide-large background-color-black color-white sombra-superior">
-       <div class="w3-row-padding">
-         <div class="s3 w3-btn w3-xlarge">
+     <div id="phoneMenu" class="w3-center w3-bottom w3-hide-large background-color-black color-white sombra-superior">
+       <div class="w3-row-padding w3-padding">
+         <div class="w3-col s3 w3-btn w3-xlarge">
            <i class="fas fa-list-alt"></i>
          </div>
-         <div class="s3 w3-btn w3-xlarge">
+         <div class="w3-col s3 w3-btn w3-xlarge">
            <i class="fas fa-address-card"></i>
          </div>
-         <div class="s3 w3-btn w3-xlarge">
+         <div class="w3-col s3 w3-btn w3-xlarge">
            <i class="fas fa-cogs w3-xlarge"></i>
          </div>
-         <div class="s3 w3-btn w3-xlarge">
+         <div class="w3-col s3 w3-btn w3-xlarge">
            <a href="?eliminar"><i class="fas fa-sign-out-alt"></i></a>
          </div>
         </div>
      </div>
-     <!-- Resto de la página de administración -->
-     <div id="cuerpo"></div>
 
      <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
      <script type="text/javascript" src="js/main_admin.js"></script>

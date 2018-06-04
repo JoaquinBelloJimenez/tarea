@@ -69,6 +69,8 @@ html, body {
 .sombra-inferior {
   box-shadow:   0 2px 1px var(--color-white);
 }
+.sombra-inferior-negra
+{box-shadow:   0 2px 1px var(--color-black);}
 
 .padding-bottom {
   padding-bottom: 16px !important;
@@ -80,4 +82,9 @@ html, body {
 
 .border-color-white {
   border-color: var(--color-white);
+}
+
+.w3-circle-icon {
+  border-radius: 50%;
+  padding:16px 18px;
 }

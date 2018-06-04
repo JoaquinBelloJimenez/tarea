@@ -70,7 +70,7 @@
 
   //select
   function php_lista_select() {
-    $.post("servicios/funciones_admin.php",
+    $.post("servicios/web_admin.php",
     {
       tipo: "lista",
     },
