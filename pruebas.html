@@ -10,64 +10,93 @@
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <style media="screen">
       body{background-color:#DAE0E6;}
-      #barra_lateral {
-        top: 49px;
-        height: 100%;
-        background-color: #fff;
-        position: fixed!important;
-        z-index: 1;
-      }
-      .lateral {
-        transition: left 0.5s;
-        left: 0px;
-      }
-      .invisible{
-        left:-300px;
-      }
     </style>
-
   </head>
   <body>
-    <!--barra superior-->
-    <div class="w3-bar w3-top background-color-white w3-border">
-        <div id="bt_menu" class="w3-bar-item color-black color-hover-black" onclick="abrirMenu()"><i class="fas fa-bars"></i></div>
-        <div class="color-black">
-          <h5> NOMBRE USUARIO</h5>
+
+    <div class="w3-button background-color-pri" onclick="modal_show('#1')">modal lista</div>
+
+    <div class="w3-button background-color-pri" onclick="modal_show('#2')">modal editar nombre</div>
+
+    <div class="w3-button background-color-sec-light" onclick="modal_show('#eliminar',1)">modal eliminar lista</div>
+
+    <div id="1" class="w3-modal">
+      <div class="w3-modal-content w3-animate-top">
+        <div class="w3-row background-color-black">
+          <div class="w3-col s1">
+            <div class="w3-button w3-large color-hover-sec" onclick="modal_hide('#1')">
+              <i class="fas fa-long-arrow-alt-left"></i>
+            </div>
+          </div>
+          <div class="w3-col s10">
+            <div class="w3-large w3-padding w3-center">
+              NOMBRE DE LISTA
+            </div>
+          </div>
+          <div class="w3-col s1">
+            <div class="w3-dropdown-hover w3-padding w3-large color-hover-pri background-color-black-f w3-right">
+              <i class="fas fa-chevron-down"></i>
+              <div class="w3-dropdown-content w3-bar-block" style="right:0;">
+                <a href="#" class="w3-bar-item w3-button">Renombrar</a>
+                <a href="#" class="w3-bar-item w3-button">Eliminar</a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
-    <!-- barra lateral -->
-    <div id="barra_lateral" class="w3-light-grey w3-bar-block lateral invisible">
-        <p class="w3-center">Opciones Admin</p>
-        <div class="w3-bar-item w3-buttom w3-display">
-          <a class="w3-padding w3-xlarge w3-button full-width">USUARIOS <i class="w3-right fas fa-users color-sec"></i> </a>
+    <div id="2" class="w3-modal">
+      <div class="w3-modal-content">
+        <div class="w3-row background-color-black">
+          <div class="w3-col s1">
+            <div class="w3-button w3-large color-hover-sec" onclick="modal_hide('#2')">
+              <i class="fas fa-long-arrow-alt-left"></i>
+            </div>
+          </div>
+          <div class="w3-col s10">
+            <div class="w3-large w3-padding w3-center">
+              RENOMBRAR LISTA
+            </div>
+          </div>
+          <div class="w3-col s1">
+            <div class="w3-button w3-large color-hover-pri color-pri w3-right" onclick="modal_hide('#2')">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
         </div>
-        <div class="w3-bar-item w3-buttom w3-display">
-          <a class="w3-padding w3-xlarge w3-button full-width">TAREAS <i class="w3-right fas fa-calendar-check color-sec"></i> </a>
+        <div class="w3-container w3-padding">
+          <input class="w3-input w3-border w3-center" type="text" name="" value="" placeholder="Nuevo título">
         </div>
-        <div class="w3-bar-item w3-buttom w3-display">
-          <a class="w3-padding w3-button full-width" style="font-size:34px;"><i class="fas fa-list-ul color-sec" style="font-size:24px"></i> <label>Listas</label> </a>
-        </div>
-        <div class="w3-bar-item w3-buttom w3-display">
-          <a class="w3-padding w3-xlarge w3-button full-width">SALIR <i class="w3-right fas fa-sign-out-alt color-sec"></i> </a>
-        </div>
-        <div class="w3-bar-item w3-buttom w3-display" style="font-size:24px">
-          <i class="fas fa-list-ul color-sec" style="font-size:24px"></i>hola
-        </div>
+      </div>
     </div>
 
-
+    <div id="eliminar" class="w3-modal">
+      <div class="w3-modal-content">
+        <div class="w3-row background-color-black">
+          <div class="w3-col s11">
+            <div class="w3-large w3-padding w3-center">ELIMINAR LISTA</div>
+          </div>
+          <div class="w3-col s1">
+            <div class="w3-button w3-large color-hover-sec w3-right" onclick="modal_hide('#eliminar')">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
-    valor = 0;
 
+    function modal_show(id, number){
+      $(id).show();
+      console.log(number);
+    }
 
-
-    function abrirMenu(){
-      $("#barra_lateral").toggleClass("invisible");
-      $("#bt_menu > i").toggleClass("fa-times");
-    };
+    function modal_hide(id){
+      $(id).hide();
+    }
 
     </script>
   </body>

@@ -41,15 +41,17 @@ html, body {
 {background-color:var(--color-sec-light);}
 .background-color-black
 {background-color:var(--color-black); color:white;}
+.background-color-black-f
+{background-color:var(--color-black) !important; color:white !important;}
 .background-color-white
 {background-color:var(--color-white);}
 
 .color-hover-pri:hover
-{background-color: var(--color-pri); color:white;}
+{background-color: var(--color-pri) !important; color:white !important;}
 .color-hover-sec:hover
-{background-color: var(--color-sec); color:white;}
+{background-color: var(--color-sec) !important; color:white !important;}
 .color-hover-black:hover
-{background-color: var(--color-black); color:white;}
+{background-color: var(--color-black) !important; color:white !important;}
 
 /* Index */
 .background-img-1 {
