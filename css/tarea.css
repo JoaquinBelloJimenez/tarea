@@ -96,6 +96,9 @@ html, body {
   width:50%;
 }
 
-@@media  {
-
+@media screen and (max-width: 600px) {
+    .center {
+      margin:0;
+      width:100%;
+    }
 }
