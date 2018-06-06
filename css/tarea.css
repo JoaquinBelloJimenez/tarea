@@ -91,6 +91,11 @@ html, body {
   padding:16px 18px;
 }
 
+/*Clikables*/
+.pointer-events-none{pointer-events: none;}
+.pointer-events-all{pointer-events: all;}
+
+/*inputs*/
 .center {
   margin:auto;
   width:50%;

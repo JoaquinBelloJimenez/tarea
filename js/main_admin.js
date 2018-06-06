@@ -3,6 +3,36 @@
   //Cargar el gestor de listas / asignador de tareas
   php_lista_select();
 
+
+
+  //Gestion de "modals"
+  //Mostrar "modals"
+  function modal_show(id,tipo,val1,val2){
+
+    switch (tipo) {
+      case 'lista':
+          php_tarea_select(id,val1);
+          $('#modal_lista').show();
+          $('#modal_lista_nombre').text(val1);
+          console.log('lista');
+        break;
+      default:
+        console.log('error en modal_show');
+    }
+  }
+
+
+
+
+
+  //"Modals" segun sus funciones
+  function modal_listas(id,val1) {
+
+  }
+
+
+
+
 //Seccion de listas
 
   //Ver listas
@@ -80,15 +110,16 @@
     });
   }
 
-  function php_lista_tarea_select(elemento) {
-    $.post("servicios/funciones_admin.php",
+  function php_tarea_select(id,nombre) {
+    $.post("servicios/web_admin.php",
     {
-      tipo: "lista_tarea",
-      id_lista: elemento.name,
+      tipo: "tarea",
+      id_lista: id,
+      nombre: nombre,
     },
     function(respuesta){
-      $("#modal_tareas").append(respuesta);
-      $("#modal_tareas").css("display","block");
+      $("#modal_lista").append(respuesta);
+      $("#modal_lista").css("display","block");
     });
   }
 
