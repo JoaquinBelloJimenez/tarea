@@ -21,6 +21,8 @@
 
     <div class="w3-button background-color-sec-light" onclick="modal_show('#eliminar',1)">modal eliminar lista</div>
 
+    <div class="w3-button background-color-pri-light" onclick="modal_show('#editar_tarea',1)">modal editar tarea</div>
+
     <div id="1" class="w3-modal">
       <div class="w3-modal-content w3-animate-top">
         <div class="w3-row background-color-black">
@@ -73,16 +75,44 @@
     </div>
 
     <div id="eliminar" class="w3-modal">
-      <div class="w3-modal-content">
-        <div class="w3-row background-color-black">
-          <div class="w3-col s11">
-            <div class="w3-large w3-padding w3-center">ELIMINAR LISTA</div>
-          </div>
-          <div class="w3-col s1">
+      <div class="w3-modal-content w3-center">
+        <div class="background-color-black">
+            <div class="w3-large w3-padding">¿Deseas eliminar la lista?</div>
+          <div class="w3-display-topright">
             <div class="w3-button w3-large color-hover-sec w3-right" onclick="modal_hide('#eliminar')">
               <i class="fas fa-times"></i>
             </div>
           </div>
+        </div>
+        <h4> <b>Advertencia: </b> ¡¡Todas las tareas asociadas serán eliminadas junto a la lista!!</h4>
+         <p id="bt_modal_eliminar" class="color-white background-color-sec w3-btn">ELIMINAR</p>
+      </div>
+    </div>
+
+    <div id="editar_tarea" class="w3-modal">
+      <div class="w3-modal-content">
+        <div class="w3-row background-color-black">
+          <div class="w3-col s1">
+            <div class="w3-button w3-large color-hover-sec" onclick="modal_hide('#2')">
+              <i class="fas fa-long-arrow-alt-left"></i>
+            </div>
+          </div>
+          <div class="w3-col s10">
+            <div class="w3-large w3-padding w3-center">
+              EDITAR TAREA
+            </div>
+          </div>
+          <div class="w3-col s1">
+            <div class="w3-button w3-large color-hover-pri color-pri w3-right" onclick="modal_hide('#2')">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+        </div>
+        <div class="w3-container w3-padding center">
+          <label>Nombre</label>
+          <input class="w3-input w3-border w3-center" type="text" name="" value="" placeholder="Título de tarea">
+          <label>Descripción</label>
+          <input class="w3-input w3-border w3-center" type="text" name="" value="" placeholder="Descripión de tarea">
         </div>
       </div>
     </div>
