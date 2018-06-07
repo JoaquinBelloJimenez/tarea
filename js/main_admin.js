@@ -16,11 +16,41 @@
           $('#modal_lista_nombre').text(val1);
           console.log('lista');
         break;
+      case 'eliminar':
+        $('#modal_eliminar').show();
+        $('#bt_eliminar').click( function(){
+          php_lista_borrar(id);
+          modal_hide('#modal_lista');
+        });
+        break;
+        case 'nueva_lista':
+          $('#modal_editar_lista').show();
+          $('#bt_editar_lista').click( function(){
+            var nombre = $('#input_lista').val();
+
+            php_lista_crear(nombre,val1);
+            modal_hide('#modal_editar_lista');
+          });
+          break;
       default:
         console.log('error en modal_show');
     }
   }
 
+  //Ocutar "modals"
+  function modal_hide(tipo) {
+    switch (tipo) {
+      case '#modal_lista':
+        $(tipo).empty();
+        break;
+      case '#modal_eliminar':
+        $('#bt_eliminar').click('');
+        break;
+      default:
+        console.log('Err modal_hide');
+    }
+    $(tipo).hide();
+  }
 
 
 
@@ -105,8 +135,11 @@
       tipo: "lista",
     },
     function(respuesta){
+      $("#cuerpo").empty();
       $("#cuerpo").append(respuesta);
-      $("#nuevaLista").hide();
+      //Aparecer de forma suave
+      $("#cuerpo").hide();
+      $("#cuerpo").fadeIn("fast", function(){});
     });
   }
 
@@ -124,14 +157,14 @@
   }
 
   //create / insert
-  function php_lista_crear(nombre) {
+  function php_lista_crear(nombre, id) {
     $.post("oad/funciones_oad.php",
     {
       funcion: "create",
       donde: "listas",
       nombre: nombre,
       categoria: 1,
-      usuario: 1,
+      usuario: id,
     },
     function(){
       $("#cuerpo").empty();
@@ -149,8 +182,10 @@
       usuario: 1,
     },
     function(){
-      $("#cuerpo").empty();
-      php_lista_select();
+      $("#cuerpo").fadeOut("slow", function(){
+        php_lista_select();
+      });
+
     });
   }
 
@@ -168,20 +203,20 @@
   }
 
   //delete
-  function php_lista_borrar(elemento) {
+  function php_lista_borrar(id) {
     //Sistema ajax para eliminar elemento
     $.post("oad/funciones_oad.php",
       {
         que: "l",
         desde: "listas l",
-        donde: "l.id_lista = "+ elemento.name,
+        donde: "l.id_lista = "+ id,
         funcion: "delete",
       },
-      function(respuesta){
-        console.log("eliminado!");
-        /*$("#idlista_" + elemento.name).fadeOut("slow", function(){
-          $("#idlista_" + elemento.name).remove();
-        });*/
+      function(){
+        modal_hide('.w3-modal');
+        $("#lista_" +id).fadeOut("slow", function(){
+          $("#lista_" + id).remove();
+        });
       });
   }
 

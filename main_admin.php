@@ -50,9 +50,9 @@
        </div>
      </div>
      <!-- Resto de la página de administración -->
-     <div id="cuerpo"></div>
+     <div id="cuerpo" class="padding-bottom-64"></div>
      <!-- menú inferior para vistas en móviles -->
-     <div id="phoneMenu" class="w3-center w3-bottom w3-hide-large background-color-black color-white sombra-superior">
+     <div class="w3-center w3-bottom w3-hide-large background-color-black color-white sombra-superior">
        <div class="w3-row-padding w3-padding">
          <div class="w3-col s3 w3-btn w3-xlarge">
            <i class="fas fa-list-alt"></i>
