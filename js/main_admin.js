@@ -25,13 +25,26 @@
         break;
         case 'nueva_lista':
           $('#modal_editar_lista').show();
+          $('#input_lista').val('');
           $('#bt_editar_lista').click( function(){
-            var nombre = $('#input_lista').val();
-
-            php_lista_crear(nombre,val1);
-            modal_hide('#modal_editar_lista');
+            if ($('#input_lista').val().length > 0) { //Funciona si hay texto
+              var nombre = $('#input_lista').val();
+              php_lista_crear(nombre,val1);
+              modal_hide('#modal_editar_lista');
+            }
+            else{console.log('texto corto');}
           });
           break;
+        case 'editar_lista':
+          $('#modal_editar_lista').show();
+          $('#input_lista').val(val1);
+          $('#bt_editar_lista').click( function(){
+            var nombre = $('#input_lista').val();
+            //php_lista_editar(nombre,id);
+            $('#lista_'+ id).val(nombre);
+            modal_hide('#modal_editar_lista');
+          });
+        break;
       default:
         console.log('error en modal_show');
     }
@@ -51,17 +64,6 @@
     }
     $(tipo).hide();
   }
-
-
-
-
-  //"Modals" segun sus funciones
-  function modal_listas(id,val1) {
-
-  }
-
-
-
 
 //Seccion de listas
 

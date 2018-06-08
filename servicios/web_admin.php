@@ -38,7 +38,7 @@ function gestor_listas() {
       ?>
       <div id="lista_<?=$id?>" class="w3-col s12 l6 padding-bottom">
         <div class="w3-card w3-row background-color-black">
-          <div class="w3-col s8 m10 w3-padding"><?=$nombre?></div>
+          <div class="w3-col s8 m10 w3-padding titulo"><?=$nombre?></div>
           <div class="w3-col s4 m2 w3-border-left border-color-white w3-btn" onclick="modal_show('<?=$id?>','lista','<?=$nombre?>',0);">
             <a><i class="fas fa-pen-square"></i></a>
           </div>
@@ -91,7 +91,7 @@ function gestor_listas() {
       </div>
     </div>
     <div class="w3-container w3-padding center">
-      <input id="input_lista" class="w3-input w3-border w3-center" type="text" value="" maxlength="12" placeholder="Nuevo título">
+      <input id="input_lista" class="w3-input w3-border w3-center" type="text" maxlength="12" placeholder="Nuevo título">
     </div>
   </div>
 </div>
@@ -125,7 +125,9 @@ function gestor_listas() {
           <div class="w3-dropdown-hover w3-padding w3-large color-hover-pri background-color-black-f">
             <i class="fas fa-chevron-down"></i>
             <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0;">
-              <a href="#" class="w3-bar-item w3-button">Renombrar</a>
+              <a href="#" class="w3-bar-item w3-button" onclick="modal_show('<?=$id_lista?>','editar_lista','<?=$nombre?>',0);">
+                Renombrar
+              </a>
               <a href="#" class="w3-bar-item w3-button" onclick="modal_show('<?=$id_lista?>','eliminar',0,0);">
                 Eliminar
               </a>
