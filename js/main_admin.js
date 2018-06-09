@@ -4,7 +4,6 @@
   php_lista_select();
 
 
-
   //Gestion de "modals"
   //Mostrar "modals"
   function modal_show(id,tipo,val1,val2){
@@ -40,9 +39,11 @@
           $('#input_lista').val(val1);
           $('#bt_editar_lista').click( function(){
             var nombre = $('#input_lista').val();
-            //php_lista_editar(nombre,id);
-            $('#lista_'+ id).val(nombre);
+            php_lista_editar(nombre,id); //renombrar en base de datos
+            $('#modal_lista_nombre').text(nombre); //renombrando elementos
+            $('div#lista_'+ id).find('.titulo').text(nombre);
             modal_hide('#modal_editar_lista');
+            nombre, id = 0;
           });
         break;
       default:
@@ -63,22 +64,6 @@
         console.log('Err modal_hide');
     }
     $(tipo).hide();
-  }
-
-//Seccion de listas
-
-  //Ver listas
-  //Regresar a la vista de listas
-  function bt_atras_tareas() {
-      $("#modal_tareas").empty();
-      $("#modal_tareas").css("display","none");
-  }
-
-  //Crear / editar listas
-  function nueva_lista() {
-    $("#nuevaLista").show();
-    $("#nuevaLista input").focus();
-    $("#bt_nuevaLista").hide();
   }
 
   //Editar una tarea en la vista de listas
@@ -171,6 +156,18 @@
     function(){
       $("#cuerpo").empty();
       php_lista_select();
+    });
+  }
+
+  function php_lista_editar(nombre, id) {
+    $.post("oad/funciones_oad.php",
+    {
+      funcion: "update",
+      donde: "listas",
+      que: 'nombre_lista ="' + nombre + '"',
+      comprueba: "id_lista =" + id,
+    },
+    function(){
     });
   }
 
@@ -281,29 +278,6 @@
 
       //delete
 
-
-
-
-
-// -- Funciones dentro de la página --
-
-  // -- Botones --
-  //Eliminar una tarea
-  function bt_borrar_tarea(elemento) {
-      $("#bt_modal_eliminar").click( function(){
-        $("#idlista_" + elemento.name).hide();
-        $('#modal_eliminar').hide();
-        php_borrar(elemento);
-      });
-  }
-
-
-
-  //Al cancelar se limpian los valores de los botones
-    $("#bt_cancelar_eliminar").click( function(){
-      elemento = 0;
-      $('#modal_eliminar').hide();
-    });
 
 
 function ver_escrito(elemento){

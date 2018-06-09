@@ -137,8 +137,14 @@ function gestor_listas() {
       </div>
       <?php   while ($tarea = $reg->fetch(PDO::FETCH_ASSOC)) { ?>
       <div class="w3-padding w3-large w3-border">
+        <div class="w3-right w3-btn color-hover-sec">
+          <i class="fa fa-minus-square"></i>
+        </div>
+        <div class="w3-right w3-btn color-hover-pri">
+          <i class="fas fa-pen-square"></i>
+        </div>
         <span><?=$tarea['nombre_tarea'];?></span> <br>
-        <span class="w3-hide-medium w3-hide-small"><?=$tarea['desc_tarea'];?></span>
+        <span class="w3-hide-medium w3-hide-small w3-medium"><?=$tarea['desc_tarea'];?></span>
       </div>
     <?php } ?>
     </div>
