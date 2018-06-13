@@ -1,15 +1,20 @@
 <?php
 #Contenido web de la vista Configuración para usuarios del tipo Administrador
+//Requires
+require_once __DIR__.'/../oad/funciones_oad.php';
 
-//Comprobar sesión
-session_start();
+//Variables
+$nombre_usuario = $_SESSION['nombreUsuario'];
 
-#Require
+//Si se ha definido la contrasseña anterior se recogen los datos
+if (isset($_POST['vieja_contra'])) {
+  $nombre = $_POST['nombre'];
+  $contra = $_POST['contra'];
+  $vieja_contra = $_POST['vieja_contra'];
+  comprobar_contra($nombre,$contra,$vieja_contra);
+}
+else{
 
-#Variables
-$id_usuario = $_SESSION['idUsuario'];
-$contra_usuario = $_SESSION['contraUsuario'];
-$nombre_usuario = $_SESSION["nombreUsuario"];
 #Cargar el contenido principal
  ?>
    <div class="w3-content w3-padding">
@@ -24,11 +29,11 @@ $nombre_usuario = $_SESSION["nombreUsuario"];
              <label><b>Nuevo nombre</b><span id="error_nombre" class="error color-sec">*</span></label>
              <input id="nombre" class="w3-input w3-border w3-sand" type="text" value="<?=$nombre_usuario?>"></p>
              <p>
-             <label><b>Nueva contraseña</b><span id="error_contra" class="color-sec">*</span></label>
+             <label><b>Nueva contraseña</b><span class="color-sec">*</span></label>
              <input id="contra" class="w3-input w3-border w3-sand" type="password" value=""></p>
              <p>
-             <label><b>Contraseña anterior</b><span id="error_anterior" class="color-sec">*</span></label>
-             <input class="w3-input w3-border w3-sand" type="password"></p>
+             <label><b>Contraseña anterior</b><span class="color-sec">*</span></label>
+             <input id="vieja_contra" class="w3-input w3-border w3-sand" type="password"></p>
              <div class="w3-center w3-large w3-row">
                <div class="w3-half w3-padding">
                  <button class="w3-btn background-color-black color-pri" onclick="prueba();">Guardar cambios</button>
@@ -43,7 +48,26 @@ $nombre_usuario = $_SESSION["nombreUsuario"];
 
    </div>
  </div>
- <script type="text/javascript">
- //Obtener la contraseña del usuario
- contra_usuario = <?php echo json_encode($the_php_var) ?>;
- </script>
+
+<?php } #else - contenido principal
+
+function comprobar_contra($nombre,$contra,$vieja_contra){
+  $id_usuario = $_SESSION["idUsuario"];
+  $contra_usuario = $_SESSION["contraUsuario"];
+  //Comprobar la contraseña facilitada por el usuario
+  if ($vieja_contra == $contra_usuario) {
+    //Generar la sentencia sql
+    $sql = datos_update("usuarios","nombre =? , contrasenia =?","usuarios.id_usuario =?");
+    //Mandar la sentencia sql
+    $reg = datos_ejecutar($sql,$nombre,$contra,$id_usuario);
+
+  }
+  else {}
+  //Generar la sentencia sql para guardar los datos
+  #$sql = datos_select("*","usuarios","WHERE nombre=? AND contrasenia=?");
+  //Mandar la sentencia sql
+  #$reg = datos_ejecutar($sql,$usuario,$contrasenia);
+}
+
+
+  ?>

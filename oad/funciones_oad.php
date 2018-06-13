@@ -63,7 +63,7 @@ if (isset($_POST['funcion'])){
 
   //Funcion UPDATE
   function datos_update($donde,$que, $comprueba){
-    $sentencia_update = "UPDATE $donde SET $que WHERE $donde.$comprueba";
+    $sentencia_update = "UPDATE $donde SET $que WHERE $comprueba";
     return $sentencia_update;
   }
 
@@ -79,7 +79,6 @@ if (isset($_POST['funcion'])){
     $conexionbd = new tarea_bd();
 
     $sql = $conexionbd->sentencia($sql,$datos);
-
     return $sql;
 
     $conexionbd = "";

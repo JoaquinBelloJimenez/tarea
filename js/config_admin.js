@@ -1,26 +1,22 @@
 //JS de administradores para gestión de usuarios
 
-//Funciones de "modals"
-
-//Abrir "modals"
-function modal_show_user(id,seleccionado,nombre){
-  $(id).show();
-  usuario_seleccionado = seleccionado;
-}
-
-
-//cerrar "modals"
-function modal_hide(id){
-  $(id).hide();
-}
-
-
 function prueba(){
-  //Comprobar la longitud de un texto
+  //Si todos los campos están completos se procede a comprobar los datos
   if ( comprobar_longitud($('#nombre').val()) ) {
-    console.log('hay nombre');
     if ( comprobar_longitud($('#contra').val()) ) {
-      console.log('hay contraseña');
+      if ( comprobar_longitud($('#vieja_contra').val()) ) {
+        $.post("servicios/config_admin.php",
+        {
+          nombre: $('#nombre').val(),
+          contra: $('#contra').val(),
+          vieja_contra: $('#vieja_contra').val(),
+        },
+        function(){});
+      }
     }
+  }
+  //Mostrar la alerta
+  if (!comprobar_longitud($('#nombre').val()) || !comprobar_longitud($('#contra').val()) || !comprobar_longitud($('#vieja_contra').val()) ) {
+      $('#error_nombre').text('* Todos los campos son obligatorios');
   }
 }
