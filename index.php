@@ -52,5 +52,21 @@
       </div>
     </div>
 
+    <div class="background-color-black color-white w3-center">
+      <div class="w3-row-padding">
+        <div class="w3-col s12 m6 l6 w3-padding">
+          <h3>JoaquinBelloJimenez 2018</h3>
+          <p class="color-pri"> <a href="https://github.com/JoaquinBelloJimenez/tarea"> Código fuente</a> </p>
+          <p class="color-pri"> <a href="https://github.com/JoaquinBelloJimenez"> Perfíl de GitHub</a> </p>
+        </div>
+        <div class="w3-col s12 m6 l6 w3-padding">
+          <h3>Tecnologías usadas</h3>
+          <p>HTML y CSS</p>
+          <p>PHP</p>
+          <p>JS y JQUERY</p>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>

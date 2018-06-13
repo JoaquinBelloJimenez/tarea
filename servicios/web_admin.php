@@ -95,6 +95,34 @@ function gestor_listas() {
     </div>
   </div>
 </div>
+
+<div id="modal_editar_tarea" class="w3-modal">
+  <div class="w3-modal-content">
+    <div class="w3-row background-color-black">
+      <div class="w3-col s1">
+        <div class="w3-button w3-large color-hover-sec" onclick="modal_hide('#modal_editar_tarea')">
+          <i class="fas fa-long-arrow-alt-left"></i>
+        </div>
+      </div>
+      <div class="w3-col s10">
+        <div class="w3-large w3-padding w3-center">
+          EDITAR TAREA
+        </div>
+      </div>
+      <div class="w3-col s1">
+        <div id="bt_editar_tarea" class="w3-button w3-large color-hover-pri color-pri w3-right">
+          <i class="fas fa-check"></i>
+        </div>
+      </div>
+    </div>
+    <div class="w3-container w3-padding center">
+      <label>Nombre</label>
+      <input class="w3-input w3-border w3-center nombre" type="text" name="" value="" placeholder="Título de tarea">
+      <label>Descripción</label>
+      <input class="w3-input w3-border w3-center desc" type="text" name="" value="" placeholder="Descripión de tarea">
+    </div>
+  </div>
+</div>
 <?php } //function gestor_listas() ?>
 
  <?php
@@ -117,7 +145,7 @@ function gestor_listas() {
           <div id="modal_lista_nombre" class="w3-large w3-padding w3-center"><?=$nombre?></div>
         </div>
         <div class="w3-col s2 m1">
-          <div class="w3-button w3-large color-hover-pri" onclick="">
+          <div class="w3-button w3-large color-hover-pri" onclick="modal_show('<?=$id_lista?>','editar_tarea',0,0)">
             <i class="fas fa-plus"></i>
           </div>
         </div>

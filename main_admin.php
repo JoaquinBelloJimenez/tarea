@@ -31,15 +31,15 @@
      <!-- menú superior para vistas en ordenador y pantallas anchas -->
      <div class="w3-hide-small w3-hide-medium padding-bottom-64">
        <div class="w3-bar w3-top background-color-black color-white sombra-inferior">
-         <a href="#LISTAS" class="w3-bar-item w3-btn w3-tooltip">
+         <a href="#listas" class="w3-bar-item w3-btn w3-tooltip" onclick="lista_first_select();">
            <i class="fas fa-list-alt w3-xlarge"></i>
            <p class="w3-text w3-center w3-small">LISTAS</p>
          </a>
-         <a href="#" class="w3-bar-item w3-btn w3-tooltip">
+         <a href="#usuarios" class="w3-bar-item w3-btn w3-tooltip" onclick="usuario_first_select();">
            <i class="fas fa-address-card w3-xlarge"></i>
            <p class="w3-text w3-center w3-small">USUARIOS</p>
          </a>
-         <a href="#" class="w3-bar-item w3-btn w3-tooltip">
+         <a href="#config" class="w3-bar-item w3-btn w3-tooltip" onclick="config_first_select();">
            <i class="fas fa-cogs w3-xlarge"></i>
            <p class="w3-text w3-center w3-small">CONFIGURAR</p>
          </a>
@@ -54,13 +54,13 @@
      <!-- menú inferior para vistas en móviles -->
      <div class="w3-center w3-bottom w3-hide-large background-color-black color-white sombra-superior">
        <div class="w3-row-padding w3-padding">
-         <div class="w3-col s3 w3-btn w3-xlarge">
+         <div class="w3-col s3 w3-btn w3-xlarge" onclick="php_lista_select();">
            <i class="fas fa-list-alt"></i>
          </div>
-         <div class="w3-col s3 w3-btn w3-xlarge">
+         <div class="w3-col s3 w3-btn w3-xlarge" onclick="php_usuario_select();">
            <i class="fas fa-address-card"></i>
          </div>
-         <div class="w3-col s3 w3-btn w3-xlarge">
+         <div class="w3-col s3 w3-btn w3-xlarge" onclick="php_config_select();">
            <i class="fas fa-cogs w3-xlarge"></i>
          </div>
          <div class="w3-col s3 w3-btn w3-xlarge">
@@ -68,7 +68,6 @@
          </div>
         </div>
      </div>
-
      <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
      <script type="text/javascript" src="js/main_admin.js"></script>
    </body>

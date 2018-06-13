@@ -26,8 +26,9 @@
 
       $_SESSION["idUsuario"] = $datos["id_usuario"];
       $_SESSION["nombreUsuario"] = $datos["nombre"];
+      $_SESSION["contraUsuario"] = $contrasenia;
 
-      if ($datos["tipo"] == 0) {
+      if ($datos["id_admin"] == null) {
         //usuario admin
         header("location:main_admin.php");
       }else{
