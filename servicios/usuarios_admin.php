@@ -14,6 +14,10 @@ if(isset($_POST['tipo'])) {
       $nombre = $_POST['id_usuario'];
       generar_tareas_usuarios($id_usuario,$nombre);
       break;
+    case 'obtener_tareas':
+      $respuesta = '<tr><td>miau</td></tr>';
+      echo $respuesta;
+      break;
   }
 }
 
@@ -76,8 +80,30 @@ function generar_lista_usuarios(){
  </div>
 <?php } //generar_lista_usuarios()
 
-function generar_tareas_usuarios(){
-SELECT u.id_usuario, u.nombre, t.nombre_tarea, e.valor FROM usuarios u JOIN tarea_usuario tu JOIN tareas t JOIN estado e ON u.id_usuario = tu.id_usuario
-}
+function generar_tareas_usuarios($id_usuario, $nombre){
+  //Obtener las listas
+  $sql = datos_select("tu.id_asignada, t.nombre_tarea, e.valor","tareas t JOIN tarea_usuario tu ON t.id_tarea = tu.id_tarea JOIN estado e ON e.id_estado = tu.id_estado","WHERE tu.id_usuario =?");
+  $reg = datos_ejecutar($sql,$id_usuario);
+  $almacen = 'SELECT t.nombre_tarea, e.valor FROM tareas t JOIN tarea_usuario tu ON t.id_tarea = tu.id_tarea JOIN estado e ON e.id_estado = tu.id_estado WHERE tu.id_usuario = 5';
 
 ?>
+  <div class="w3-modal-content">
+      <div class="w3-container">
+        <table class="w3-table">
+          <tr>
+            <th>tarea</th>
+            <th>estado</th>
+            <th>opciones</th>
+          </tr>
+          <?php   while ($tarea = $reg->fetch(PDO::FETCH_ASSOC)) { ?>
+          <tr id="asignada_<?=$tarea['id_asignada']?>">
+            <td><?=$tarea['nombre_tarea']?></td>
+            <td><?=$tarea['valor']?></td>
+            <td>botones aceptar y eliminar</td>
+          </tr>
+        <?php } #while ?>
+        </table>
+      </div>
+    </div>
+
+<?php }; #generar_tareas_usuarios ?>

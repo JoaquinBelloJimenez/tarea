@@ -26,7 +26,7 @@ $('#bt_eliminar_usuario').click(function(){
 //Abrir "modals"
 function modal_show_user(id,seleccionado,nombre){
   if (id = '#modal_usuario') {
-    $.post("oad/funciones_oad.php",
+    $.post("servicios/usuarios_admin.php",
     {
       tipo: "tareas_usuarios",
       id_usuario: seleccionado,
@@ -47,4 +47,14 @@ function modal_show_user(id,seleccionado,nombre){
 //cerrar "modals"
 function modal_hide_user(id){
   $(id).hide();
+}
+
+function obtener_tareas(){
+  $.post("servicios/usuarios_admin.php",
+  {
+    tipo:'obtener_tareas',
+  },
+  function(respuesta){
+    $("table tbody").append(respuesta);
+  });
 }
