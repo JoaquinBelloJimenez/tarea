@@ -9,12 +9,10 @@ if(isset($_POST['tipo'])) {
     case 'lista_usuarios':
       generar_lista_usuarios();
       break;
-    case 'lista_tarea':
-      $id_lista = $_POST['id_lista'];
-      generar_lista_tarea($id_lista);
-      break;
-    case 'tarea':
-      generar_tarea();
+    case 'tareas_usuarios':
+      $id_usuario = $_POST['id_usuario'];
+      $nombre = $_POST['id_usuario'];
+      generar_tareas_usuarios($id_usuario,$nombre);
       break;
   }
 }
@@ -41,7 +39,8 @@ function generar_lista_usuarios(){
            <h2><?=$nombre?></h2>
          </div>
          <div class="w3-container w3-padding">
-           <button class="w3-button background-color-black color-pri color-hover-pri" type="button">Gestionar</button>
+           <button class="w3-button background-color-black color-pri color-hover-pri" type="button" onclick="modal_show_user('#modal_usuario',<?=$id?>,'<?=$nombre?>')">
+             Gestionar</button>
            <button class="w3-button background-color-black color-sec color-hover-sec" type="button" onclick="modal_show_user('#modal_eliminar_usuario',<?=$id?>)">
              Eliminar</button>
          </div>
@@ -66,7 +65,7 @@ function generar_lista_usuarios(){
      <div class="background-color-black color-white">
          <div class="w3-large w3-padding">¿Deseas eliminar el usuario?</div>
        <div class="w3-display-topright">
-         <div class="w3-button w3-large color-hover-sec w3-right" onclick="modal_hide('#modal_eliminar_usuario')">
+         <div class="w3-button w3-large color-hover-sec w3-right" onclick="modal_hide_user('#modal_eliminar_usuario')">
            <i class="fas fa-times"></i>
          </div>
        </div>
@@ -75,4 +74,10 @@ function generar_lista_usuarios(){
       <p id="bt_eliminar_usuario" class="color-white background-color-sec w3-btn">ELIMINAR</p>
    </div>
  </div>
-<?php } //generar_lista_usuarios() ?>
+<?php } //generar_lista_usuarios()
+
+function generar_tareas_usuarios(){
+SELECT u.id_usuario, u.nombre, t.nombre_tarea, e.valor FROM usuarios u JOIN tarea_usuario tu JOIN tareas t JOIN estado e ON u.id_usuario = tu.id_usuario
+}
+
+?>

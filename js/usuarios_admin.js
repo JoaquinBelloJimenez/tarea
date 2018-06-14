@@ -7,19 +7,44 @@ usuario_seleccionado = 0;
 
 //Botón para eliminar un usuario
 $('#bt_eliminar_usuario').click(function(){
-  console.log(usuario_seleccionado);
-  //php_usuario_eliminar(usuario_seleccionado);
+  $.post("oad/funciones_oad.php",
+  {
+    funcion:'delete',
+    que: '',
+    desde: 'usuarios',
+    donde: 'usuarios.id_usuario ='+usuario_seleccionado,
+  },
+  function(){
+    modal_hide_user('#modal_eliminar_usuario');
+    $("#usuario_" + usuario_seleccionado).fadeOut("slow", function(){
+      $("#usuario_" + usuario_seleccionado).remove();
+    });
+  });
 })
 
 
 //Abrir "modals"
 function modal_show_user(id,seleccionado,nombre){
-  $(id).show();
-  usuario_seleccionado = seleccionado;
+  if (id = '#modal_usuario') {
+    $.post("oad/funciones_oad.php",
+    {
+      tipo: "tareas_usuarios",
+      id_usuario: seleccionado,
+      nombre: nombre,
+    },
+    function(respuesta){
+      $("#modal_usuario").append(respuesta);
+      $("#modal_usuario").css("display","block");
+    });
+  }
+  else {
+    $(id).show();
+    usuario_seleccionado = seleccionado;
+  }
 }
 
 
 //cerrar "modals"
-function modal_hide(id){
+function modal_hide_user(id){
   $(id).hide();
 }
