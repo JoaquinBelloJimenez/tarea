@@ -62,7 +62,7 @@ function generar_lista_usuarios(){
 
  <!-- boton añadir usuario -->
  <div class="w3-container w3-bottom w3-padding-64 pointer-events-none" style="padding-right:32px;">
-   <div class="w3-right w3-circle-icon w3-btn sombra-inferior-negra background-color-white pointer-events-all" onclick="">
+   <div class="w3-right w3-circle-icon w3-btn sombra-inferior-negra background-color-white pointer-events-all" onclick="modal_show_user('#modal_nuevo_usuario',<?=$id_usuario?>)">
      <i class="fas fa-user-plus w3-large"></i>
    </div>
  </div>
@@ -85,6 +85,34 @@ function generar_lista_usuarios(){
    </div>
  </div>
 
+  <div id="modal_nuevo_usuario" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-row background-color-black color-white">
+        <div class="w3-col s1">
+          <div class="w3-button w3-large color-hover-sec" onclick="modal_hide_user('#modal_nuevo_usuario')">
+            <i class="fas fa-long-arrow-alt-left"></i>
+          </div>
+        </div>
+        <div class="w3-col s10">
+          <div class="w3-large w3-padding w3-center">
+            NUEVO USUARIO
+          </div>
+        </div>
+        <div class="w3-col s1">
+          <div id="bt_confirmar_usuario" class="w3-button w3-large color-hover-pri color-pri w3-right">
+            <i class="fas fa-check"></i>
+          </div>
+        </div>
+      </div>
+      <div class="w3-container w3-padding center">
+        <label>Nombre</label>
+        <input class="w3-input w3-border w3-center nombre" type="text" placeholder="Nombre">
+        <label>Contraseña</label>
+        <input class="w3-input w3-border w3-center contra" type="text" placeholder="Contraseña">
+      </div>
+    </div>
+  </div>
+
 <?php } //generar_lista_usuarios()
 
 function generar_tareas_usuarios($id_usuario, $nombre){
@@ -92,8 +120,6 @@ function generar_tareas_usuarios($id_usuario, $nombre){
   $sql = datos_select("tu.id_asignada, t.nombre_tarea, e.valor","tareas t JOIN tarea_usuario tu ON t.id_tarea = tu.id_tarea JOIN estado e ON e.id_estado = tu.id_estado","WHERE tu.id_usuario =?");
   $reg = datos_ejecutar($sql,$id_usuario);
   //Esta sentencia siguiente, es para añadir sólo la última línea de tareas asignadas
-  $almacen = 'SELECT MAX(tu.id_asignada), t.nombre_tarea, e.valor FROM tareas t JOIN tarea_usuario tu ON t.id_tarea = tu.id_tarea JOIN estado e ON e.id_estado = tu.id_estado WHERE tu.id_usuario = 5 ';
-
 ?>
   <div class="w3-modal-content">
     <div class="w3-row background-color-black color-white">
