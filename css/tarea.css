@@ -40,7 +40,7 @@ html, body {
 .background-color-sec-light
 {background-color:var(--color-sec-light);}
 .background-color-black
-{background-color:var(--color-black); color:white;}
+{background-color:var(--color-black);}
 .background-color-black-f
 {background-color:var(--color-black) !important; color:white !important;}
 .background-color-white

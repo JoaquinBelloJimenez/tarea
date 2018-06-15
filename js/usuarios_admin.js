@@ -69,5 +69,37 @@ function obtener_tareas(){
 
 //Mostrar el desplegable con las tareas asociables
 function nueva_asignada(){
+  $('#bt_asignar').prop("disabled",true);
   $("table tbody").append(lista_tareas);
+}
+
+//Escribir la nueva asignación en la base de datos
+function escribir_asignada(id){
+  $.post("oad/funciones_oad.php",
+  {
+    funcion: "insert",
+    donde: "tarea_usuario",
+    que: "(NULL,"+usuario_seleccionado+","+id+",0)",
+  },
+  function(){
+    $.post("servicios/usuarios_admin.php",
+    {
+      tipo: "obtener_ultima_tarea",
+      id_usuario: usuario_seleccionado,
+    },
+    function(respuesta){
+      $('#selector_asignada').remove();
+      $('#bt_asignar').prop("disabled",false);
+      $("table tbody").append(respuesta);
+    });
+  });
+}
+
+//Completar asiganada
+function completar_asignada($id){
+
+}
+
+function eliminar_asignada($id){
+  
 }

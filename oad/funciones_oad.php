@@ -23,6 +23,21 @@ if (isset($_POST['funcion'])){
       $sentencia_insert = datos_insert($donde,$que);
       datos_ejecutar($sentencia_insert,$donde, $id, $nombre, $categoria, $usuario);
       break;
+    case 'select':
+          $que = $_POST['que'];
+          $desde = $_POST['desde'];
+          $donde = $_POST['donde'];
+
+          $sentencia_insert = datos_insert($donde,$que);
+          datos_ejecutar($sentencia_insert,$donde,$que);
+          break;
+    case 'insert':
+        $donde = $_POST['donde'];
+        $que = $_POST['que'];
+
+        $sentencia_insert = datos_insert($donde,$que);
+        datos_ejecutar($sentencia_insert,$donde,$que);
+        break;
     case 'update':
       $donde = $_POST['donde'];
       $que = $_POST['que'];
@@ -30,12 +45,6 @@ if (isset($_POST['funcion'])){
 
       $sentencia_update = datos_update($donde,$que, $comprueba);
       datos_ejecutar($sentencia_update,$donde,$que, $comprueba);
-      break;
-    switch($tipo){
-      case 'listas':
-      break;
-    }
-
       break;
     case 'delete':
         $que = $_POST['que'];
@@ -79,6 +88,7 @@ if (isset($_POST['funcion'])){
     $conexionbd = new tarea_bd();
 
     $sql = $conexionbd->sentencia($sql,$datos);
+    #print_r($sql);
     return $sql;
 
     $conexionbd = "";

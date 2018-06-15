@@ -10,6 +10,7 @@ if(isset($_POST['tipo'])) {
       generar_lista_usuarios();
       break;
     case 'tareas_usuarios':
+      //Obtener todas las tareas asignadas al usuario seleccionado
       $id_usuario = $_POST['id_usuario'];
       $nombre = $_POST['id_usuario'];
       generar_tareas_usuarios($id_usuario,$nombre);
@@ -18,6 +19,11 @@ if(isset($_POST['tipo'])) {
     #Obtener el elemento que permite asignar una tarea al usuario seleccionado
       obtener_tareas();
       break;
+    case 'obtener_ultima_tarea':
+    //Coger la tarea recién asignada y añadirla a la tabla
+    $id_usuario = $_POST['id_usuario'];
+    obtener_ultima_tarea($id_usuario);
+    break;
   }
 }
 
@@ -89,7 +95,7 @@ function generar_tareas_usuarios($id_usuario, $nombre){
 
 ?>
   <div class="w3-modal-content">
-    <div class="w3-row background-color-black">
+    <div class="w3-row background-color-black color-white">
       <div class="w3-col s1">
         <div class="w3-button w3-large color-hover-sec" onclick="modal_hide_user('#modal_usuario')">
           <i class="fas fa-long-arrow-alt-left"></i>
@@ -117,7 +123,10 @@ function generar_tareas_usuarios($id_usuario, $nombre){
           <tr id="asignada_<?=$tarea['id_asignada']?>">
             <td><?=$tarea['nombre_tarea']?></td>
             <td><?=$tarea['valor']?></td>
-            <td>botones aceptar y eliminar</td>
+            <td class="">
+              <button class="w3-button color-pri background-color-black"><i class="fas fa-check"></i></button>
+              <button class="w3-button color-sec background-color-black"><i class="fas fa-minus"></i></button>
+            </td>
           </tr>
         <?php } #while ?>
         </table>
@@ -133,13 +142,32 @@ function obtener_tareas() {
   $sql = datos_select("t.id_tarea, t.nombre_tarea", "tareas t JOIN listas l ON t.id_lista = l.id_lista", "WHERE l.id_usuario = $id_usuario");
   $reg = datos_ejecutar($sql,$id_usuario);
 ?>
-<tr>
-  <td>
+<tr id="selector_asignada">
+  <td colspan="2">
     <select name="" class="w3-select">
   <?php while ($opcion = $reg->fetch(PDO::FETCH_ASSOC)) { ?>
     <option value="<?=$opcion['id_tarea']?>"><?=$opcion['nombre_tarea']?></option>
   <?php } #while ?>
     </select>
   </td>
+  <td> <button class="w3-button color-hover-pri background-color-black color-white" onclick="escribir_asignada($('option:selected').val())">Asignar</button> </td>
 </tr>
   <?php } #obtener_tareas() ?>
+
+  <?php
+  function obtener_ultima_tarea($id_usuario) {
+    //Obtener las tareas
+    $sql = datos_select("tu.id_asignada, t.nombre_tarea, e.valor","tareas t JOIN tarea_usuario tu ON t.id_tarea = tu.id_tarea JOIN estado e ON e.id_estado = tu.id_estado","WHERE tu.id_usuario =? ORDER BY tu.id_asignada DESC LIMIT 1");
+    $reg = datos_ejecutar($sql,$id_usuario);
+    $valor = $reg->fetch(PDO::FETCH_ASSOC);
+    print_r($valor);
+  ?>
+  <tr id="asignada_<?=$valor['id_asignada']?>">
+    <td><?=$valor['nombre_tarea']?></td>
+    <td><?=$valor['valor']?></td>
+    <td class="">
+      <button class="w3-button color-pri background-color-black"><i class="fas fa-check"></i></button>
+      <button class="w3-button color-sec background-color-black"><i class="fas fa-minus"></i></button>
+    </td>
+  </tr>
+    <?php } #obtener_tareas() ?>
