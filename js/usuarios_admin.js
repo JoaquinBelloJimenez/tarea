@@ -2,7 +2,9 @@
 
 //Variables globales
 usuario_seleccionado = 0;
+lista_tareas = 0;
 
+obtener_tareas();
 //Funciones de modales
 
 //Botón para eliminar un usuario
@@ -25,7 +27,8 @@ $('#bt_eliminar_usuario').click(function(){
 
 //Abrir "modals"
 function modal_show_user(id,seleccionado,nombre){
-  if (id = '#modal_usuario') {
+  switch (id) {
+    case '#modal_usuario':
     $.post("servicios/usuarios_admin.php",
     {
       tipo: "tareas_usuarios",
@@ -36,25 +39,35 @@ function modal_show_user(id,seleccionado,nombre){
       $("#modal_usuario").append(respuesta);
       $("#modal_usuario").css("display","block");
     });
-  }
-  else {
+      break;
+    default:
     $(id).show();
-    usuario_seleccionado = seleccionado;
   }
+  usuario_seleccionado = seleccionado;
 }
 
 
 //cerrar "modals"
 function modal_hide_user(id){
   $(id).hide();
+  if (id = '#modal_usuario') {
+    $(id).empty();
+  }
 }
 
+//Generar el desplegable con las tareas asocaibales
 function obtener_tareas(){
+  $('#bt_asignar').prop('disabled', true);
   $.post("servicios/usuarios_admin.php",
   {
     tipo:'obtener_tareas',
   },
   function(respuesta){
-    $("table tbody").append(respuesta);
+    lista_tareas = respuesta;
   });
+}
+
+//Mostrar el desplegable con las tareas asociables
+function nueva_asignada(){
+  $("table tbody").append(lista_tareas);
 }
