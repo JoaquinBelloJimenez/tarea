@@ -96,10 +96,29 @@ function escribir_asignada(id){
 }
 
 //Completar asiganada
-function completar_asignada($id){
-
+function completar_asignada(id){
+  $.post("oad/funciones_oad.php",
+  {
+    funcion: "update",
+    que: 'id_estado = 2',
+    donde: 'tarea_usuario',
+    comprueba: 'id_asignada ='+id,
+  },
+  function(){
+    $('#asignada_'+id).find('.estado').text('Completa');
+  });
 }
 
-function eliminar_asignada($id){
-  
+//Eliminar la asignada seleccionada
+function eliminar_asignada(id){
+  $.post("oad/funciones_oad.php",
+  {
+    funcion: "delete",
+    que: '',
+    desde: 'tarea_usuario',
+    donde: 'id_asignada ='+id,
+  },
+  function(){
+    $('#asignada_'+id).hide();
+  });
 }

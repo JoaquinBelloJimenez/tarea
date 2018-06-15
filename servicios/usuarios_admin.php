@@ -84,6 +84,7 @@ function generar_lista_usuarios(){
       <p id="bt_eliminar_usuario" class="color-white background-color-sec w3-btn">ELIMINAR</p>
    </div>
  </div>
+
 <?php } //generar_lista_usuarios()
 
 function generar_tareas_usuarios($id_usuario, $nombre){
@@ -122,10 +123,10 @@ function generar_tareas_usuarios($id_usuario, $nombre){
           <?php   while ($tarea = $reg->fetch(PDO::FETCH_ASSOC)) { ?>
           <tr id="asignada_<?=$tarea['id_asignada']?>">
             <td><?=$tarea['nombre_tarea']?></td>
-            <td><?=$tarea['valor']?></td>
+            <td class ="estado"><?=$tarea['valor']?></td>
             <td class="">
-              <button class="w3-button color-pri background-color-black"><i class="fas fa-check"></i></button>
-              <button class="w3-button color-sec background-color-black"><i class="fas fa-minus"></i></button>
+              <button class="w3-button color-pri background-color-black" onclick="completar_asignada(<?=$tarea['id_asignada']?>);"><i class="fas fa-check"></i></button>
+              <button class="w3-button color-sec background-color-black" onclick="eliminar_asignada(<?=$tarea['id_asignada']?>);"><i class="fas fa-minus"></i></button>
             </td>
           </tr>
         <?php } #while ?>
@@ -164,10 +165,10 @@ function obtener_tareas() {
   ?>
   <tr id="asignada_<?=$valor['id_asignada']?>">
     <td><?=$valor['nombre_tarea']?></td>
-    <td><?=$valor['valor']?></td>
+    <td class ="estado"><?=$valor['valor']?></td>
     <td class="">
-      <button class="w3-button color-pri background-color-black"><i class="fas fa-check"></i></button>
-      <button class="w3-button color-sec background-color-black"><i class="fas fa-minus"></i></button>
+      <button class="w3-button color-pri background-color-black" onclick="completar_asignada(<?=$valor['id_asignada']?>);"><i class="fas fa-check"></i></button>
+      <button class="w3-button color-sec background-color-black" onclick="eliminar_asignada(<?=$valor['id_asignada']?>);"><i class="fas fa-minus"></i></button>
     </td>
   </tr>
     <?php } #obtener_tareas() ?>

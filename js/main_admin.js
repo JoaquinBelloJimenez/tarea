@@ -11,25 +11,23 @@
     //cargar de primera
     function lista_first_select(){
       php_lista_select();
-      $.getScript( "js/tareas_admin.js");
       console.log('cargado las listas');
     }
 
     function usuario_first_select(){
       php_usuario_select();
-      $.getScript( "js/usuarios_admin.js");
       console.log('cargado los usuarios');
     }
 
     function config_first_select(){
       php_config_select();
-      $.getScript( "js/config_admin.js");
       console.log('cargado el config');
     }
 
   //Cargar la vista de listas
   function php_lista_select() {
     $("#cuerpo").hide();
+    $.getScript( "js/tareas_admin.js");
     $.post("servicios/web_admin.php",
     {
       tipo: "lista",
@@ -45,6 +43,7 @@
   //Cargar la vista de usuarios
   function php_usuario_select() {
     $("#cuerpo").hide();
+    $.getScript( "js/usuarios_admin.js");
     $.post("servicios/usuarios_admin.php",
     {
       tipo: "lista_usuarios",
@@ -60,6 +59,7 @@
   //Cargar la vista de configuracion
   function php_config_select() {
     $("#cuerpo").hide();
+    $.getScript( "js/config_admin.js");
     $.ajax({
       url: 'servicios/config_admin.php',
       success: function(html) {
