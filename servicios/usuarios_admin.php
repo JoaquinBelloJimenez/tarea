@@ -81,7 +81,7 @@ function generar_lista_usuarios(){
        </div>
      </div>
      <h4> <b>Advertencia: </b> ¡¡Los datos no podrán recuperarse!!</h4>
-      <p id="bt_eliminar_usuario" class="color-white background-color-sec w3-btn">ELIMINAR</p>
+      <p onclick="confirmar_eliminar_usuario()" class="color-white background-color-sec w3-btn">ELIMINAR</p>
    </div>
  </div>
 
@@ -99,7 +99,7 @@ function generar_lista_usuarios(){
           </div>
         </div>
         <div class="w3-col s1">
-          <div id="bt_confirmar_usuario" class="w3-button w3-large color-hover-pri color-pri w3-right">
+          <div onclick="confirmar_crear_usuario()" class="w3-button w3-large color-hover-pri color-pri w3-right">
             <i class="fas fa-check"></i>
           </div>
         </div>

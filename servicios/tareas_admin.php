@@ -16,6 +16,10 @@ if(isset($_POST['tipo'])) {
     case 'obtener_categorias':
       return obtener_categorias();
       break;
+    case 'obtener_ultima_tarea':
+      $id_lista = $_POST['id_lista'];
+      obtener_ultima_tarea($id_lista);
+      break;
   }
 }
 
@@ -52,7 +56,7 @@ function gestor_listas() {
 </div>
 <!-- boton añadir lista -->
 <div class="w3-container w3-bottom w3-padding-64 pointer-events-none" style="padding-right:32px;">
-  <div class="w3-right w3-circle-icon w3-btn sombra-inferior-negra background-color-white pointer-events-all" id="bt_nueva_lista">
+  <div class="w3-right w3-circle-icon w3-btn sombra-inferior-negra background-color-white pointer-events-all" onclick="modal_show('#modal_editar_lista')">
     <i class="fa fa-plus w3-large"></i>
   </div>
 </div>
@@ -70,7 +74,7 @@ function gestor_listas() {
       </div>
     </div>
     <h4> <b>Advertencia: </b> ¡¡Todas las tareas asociadas serán eliminadas junto a la lista!!</h4>
-     <p id="bt_eliminar" class="color-white background-color-sec w3-btn">ELIMINAR</p>
+     <p onclick="eliminar_lista()" class="color-white background-color-sec w3-btn">ELIMINAR</p>
   </div>
 </div>
 
@@ -80,7 +84,7 @@ function gestor_listas() {
   <div class="w3-modal-content">
     <div class="w3-row background-color-black color-white">
       <div class="w3-col s1">
-        <div class="w3-button w3-large color-hover-sec" onclick="modal_hide('#modal_editar_tarea')">
+        <div class="w3-button w3-large color-hover-sec" onclick="$('#modal_editar_tarea').hide()">
           <i class="fas fa-long-arrow-alt-left"></i>
         </div>
       </div>
@@ -90,7 +94,7 @@ function gestor_listas() {
         </div>
       </div>
       <div class="w3-col s1">
-        <div id="bt_editar_tarea" class="w3-button w3-large color-hover-pri color-pri w3-right">
+        <div onclick="guardar_tarea(<?=$id_usuario?>,0)" class="w3-button w3-large color-hover-pri color-pri w3-right">
           <i class="fas fa-check"></i>
         </div>
       </div>
@@ -108,6 +112,7 @@ function gestor_listas() {
  <?php
  #Modal lista
  function gestor_tareas() {
+   $id_usuario = $_SESSION['idUsuario'];
    $id_lista = $_POST['id_lista'];
    $nombre = $_POST['nombre'];
 
@@ -128,7 +133,7 @@ function gestor_listas() {
           <div class="w3-button w3-large color-hover-sec w3-right" onclick="modal_show('#modal_eliminar');">
             <i class="far fa-trash-alt"></i>
           </div>
-          <div class="w3-button w3-large color-hover-pri w3-right" onclick="modal_show('<?=$id_lista?>','editar_tarea',0,0)">
+          <div class="w3-button w3-large color-hover-pri w3-right" onclick="nueva_tarea(<?=$id_usuario?>)">
             <i class="fas fa-plus"></i>
           </div>
         </div>
@@ -188,3 +193,22 @@ function obtener_categorias() {
       </div>
     </div>
   <?php } #obtener_categorias() ?>
+
+  <?php
+  function obtener_ultima_tarea($id_lista) {
+    //Obtener las tareas
+    $sql = datos_select("*","tareas","WHERE id_lista = ? ORDER BY `id_tarea` DESC LIMIT 1");
+    $reg = datos_ejecutar($sql,$id_lista);
+    $valor = $reg->fetch(PDO::FETCH_ASSOC);
+  ?>
+  <div id="tarea_><?=$valor['id_tarea']?>" class="w3-padding w3-large w3-border">
+        <div class="w3-right w3-btn color-hover-sec">
+          <i class="fa fa-minus-square"></i>
+        </div>
+        <div class="w3-right w3-btn color-hover-pri">
+          <i class="fas fa-pen-square"></i>
+        </div>
+        <span class="nombre"><?=$valor['nombre_tarea']?></span> <br>
+        <span class="desc w3-hide-medium w3-hide-small w3-medium"><?=$valor['desc_tarea']?></span>
+      </div>
+    <?php } #obtener_tareas() ?>

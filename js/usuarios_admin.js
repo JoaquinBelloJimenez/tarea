@@ -1,51 +1,46 @@
 //JS de administradores para gestión de usuarios
-
-//Ejecutar al inicio
-$(function(){
 //Variables globales
 usuario_seleccionado = 0;
 lista_tareas = 0;
 
 obtener_tareas();
-//Funciones de modales
 
-//Botón para eliminar un usuario
-$('#bt_eliminar_usuario').click(function(){
-  $.post("oad/funciones_oad.php",
-  {
-    funcion:'delete',
-    que: '',
-    desde: 'usuarios',
-    donde: 'usuarios.id_usuario ='+usuario_seleccionado,
-  },
-  function(){
-    modal_hide_user('#modal_eliminar_usuario');
-    $("#usuario_" + usuario_seleccionado).fadeOut("slow", function(){
-      $("#usuario_" + usuario_seleccionado).remove();
+  //Botón para eliminar un usuario
+  function confirmar_eliminar_usuario(){
+    $.post("oad/funciones_oad.php",
+    {
+      funcion:'delete',
+      que: '',
+      desde: 'usuarios',
+      donde: 'usuarios.id_usuario ='+usuario_seleccionado,
+    },
+    function(){
+      modal_hide_user('#modal_eliminar_usuario');
+      $("#usuario_" + usuario_seleccionado).fadeOut("slow", function(){
+        $("#usuario_" + usuario_seleccionado).remove();
+      });
     });
-  });
-});
+  };
 
-//Botón para crear un usuario
-$('#bt_confirmar_usuario').click(function(){
-  //Tomar los valores de nombre y contraseña
-  var nombre = $('#modal_nuevo_usuario').find('input.nombre').val();
-  var contra = $('#modal_nuevo_usuario').find('input.contra').val();
-  $.post("oad/funciones_oad.php",
-  {
-    funcion:'insert',
-    donde: 'usuarios',
-    que: "(NULL,'"+nombre+"','"+contra+"',"+usuario_seleccionado+")",
-  },
-  function(){
-    php_usuario_select()
-    $("#usuario_" + usuario_seleccionado).fadeOut("slow", function(){
-      $("#usuario_" + usuario_seleccionado).remove();
+  //Botón para crear un usuario
+  function confirmar_crear_usuario(){
+    //Tomar los valores de nombre y contraseña
+    var nombre = $('#modal_nuevo_usuario').find('input.nombre').val();
+    var contra = $('#modal_nuevo_usuario').find('input.contra').val();
+    $.post("oad/funciones_oad.php",
+    {
+      funcion:'insert',
+      donde: 'usuarios',
+      que: "(NULL,'"+nombre+"','"+contra+"',"+usuario_seleccionado+")",
+    },
+    function(){
+      php_usuario_select()
+      $("#usuario_" + usuario_seleccionado).fadeOut("slow", function(){
+        $("#usuario_" + usuario_seleccionado).remove();
+      });
     });
-  });
-});
+  };
 
-});
 
 //Abrir "modals"
 function modal_show_user(id,seleccionado,nombre){
@@ -84,7 +79,7 @@ function modal_hide_user(id){
 }
 
 //Generar el desplegable con las tareas asocaibales
-function obtener_tareas(){  
+function obtener_tareas(){
   $.post("servicios/usuarios_admin.php",
   {
     tipo:'obtener_tareas',

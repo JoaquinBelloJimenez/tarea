@@ -27,7 +27,6 @@
   //Cargar la vista de listas
   function php_lista_select() {
     $("#cuerpo").hide();
-    $.getScript( "js/tareas_admin.js");
     $.post("servicios/tareas_admin.php",
     {
       tipo: "listas",
@@ -35,6 +34,7 @@
     function(respuesta){
       $("#cuerpo").empty();
       $("#cuerpo").append(respuesta);
+      $.getScript( "js/tareas_admin.js");
       //Aparecer de forma suave
       $("#cuerpo").fadeIn("fast", function(){});
     });
@@ -43,7 +43,6 @@
   //Cargar la vista de usuarios
   function php_usuario_select() {
     $("#cuerpo").hide();
-    $.getScript( "js/usuarios_admin.js");
     $.post("servicios/usuarios_admin.php",
     {
       tipo: "lista_usuarios",
@@ -51,6 +50,7 @@
     function(respuesta){
       $("#cuerpo").empty();
       $("#cuerpo").append(respuesta);
+      $.getScript( "js/usuarios_admin.js");
       //Aparecer de forma suave
       $("#cuerpo").fadeIn("fast", function(){});
     });
@@ -59,12 +59,12 @@
   //Cargar la vista de configuracion
   function php_config_select() {
     $("#cuerpo").hide();
-    $.getScript( "js/config_admin.js");
     $.ajax({
       url: 'servicios/config_admin.php',
       success: function(html) {
         $("#cuerpo").empty();
         $("#cuerpo").append(html);
+        $.getScript( "js/config_admin.js");
         //Aparecer de forma suave
         $("#cuerpo").fadeIn("fast", function(){});
       }

@@ -1,35 +1,11 @@
 //JS para usuarios del tipo Administrador
 //Ejecutar al inicio
-$(function(){
+
 //Variables globales
 lista_seleccionada = 0;
+id_usuario = 0;
+obtener_categorias();
 
-categorias = obtener_categorias();
-
-//Botón para eliminar una tarea
-$('#bt_eliminar').click(function(){
-  console.log(lista_seleccionada);
-  $.post("oad/funciones_oad.php",
-  {
-    funcion:'delete',
-    que: '',
-    desde: 'listas',
-    donde: 'listas.id_lista ='+lista_seleccionada,
-  },
-  function(){
-    modal_hide('.w3-modal');
-    $("#lista_" + lista_seleccionada).fadeOut("slow", function(){
-      $("#lista_" + lista_seleccionada).remove();
-    });
-  });
-});
-
-//Boton para añadir lista
-$('#bt_nueva_lista').click(function(){
-  modal_show('#modal_editar_lista');
-});
-
-});
 
 
 //Abrir "modals"
@@ -52,7 +28,9 @@ function modal_show(id,seleccionada,nombre, desc){
     $(id).show();
     //Limpiar los campos escritos
     $('#modal_nuevo_usuario').find('input.nombre').val('');
-    $('#modal_nuevo_usuario').find('input.contra').val('');
+    break;
+  case '#modal_editar_lista':
+    $(id).show();
     break;
     default:
     $(id).show();
@@ -87,6 +65,49 @@ function crear_lista(id){
   });
 }
 
+function nueva_tarea(){
+  modal_show('#modal_editar_tarea');
+}
+
+function guardar_tarea(id,tarea_id){
+  var nombre = $('#modal_editar_tarea').find('input.nombre').val();
+  var desc = $('#modal_editar_tarea').find('input.desc').val();
+
+    $.post("oad/funciones_oad.php",
+    {
+      funcion: "insert",
+      donde: "tareas",
+      que: "(NULL,'"+nombre+"','"+desc+"','"+lista_seleccionada+"')",
+    },
+    function(){
+      $.post("servicios/tareas_admin.php",
+      {
+        tipo: "obtener_ultima_tarea",
+        id_lista: lista_seleccionada,
+      },
+      function(respuesta){
+        $('#modal_lista').find('div.w3-row').after(respuesta);
+      });
+    });
+  }
+
+//Botón para eliminar una tarea
+function eliminar_lista(){
+  console.log(lista_seleccionada);
+  $.post("oad/funciones_oad.php",
+  {
+    funcion:'delete',
+    que: '',
+    desde: 'listas',
+    donde: 'listas.id_lista ='+lista_seleccionada,
+  },
+  function(){
+    modal_hide('.w3-modal');
+    $("#lista_" + lista_seleccionada).fadeOut("slow", function(){
+      $("#lista_" + lista_seleccionada).remove();
+    });
+  });
+};
 
 
 

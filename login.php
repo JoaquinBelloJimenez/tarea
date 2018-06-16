@@ -18,9 +18,6 @@
 
     // Si el usuario y contraseña son correctos
     if ($reg->rowCount()) {
-      //iniciar sesión
-      session_start();
-
       //Obtener el ID del usuario y comprobar si es admin
       $datos = $reg->fetch();
 
