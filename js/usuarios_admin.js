@@ -84,8 +84,7 @@ function modal_hide_user(id){
 }
 
 //Generar el desplegable con las tareas asocaibales
-function obtener_tareas(){
-  $('#bt_asignar').prop('disabled', true);
+function obtener_tareas(){  
   $.post("servicios/usuarios_admin.php",
   {
     tipo:'obtener_tareas',

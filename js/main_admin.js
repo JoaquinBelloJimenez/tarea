@@ -28,9 +28,9 @@
   function php_lista_select() {
     $("#cuerpo").hide();
     $.getScript( "js/tareas_admin.js");
-    $.post("servicios/web_admin.php",
+    $.post("servicios/tareas_admin.php",
     {
-      tipo: "lista",
+      tipo: "listas",
     },
     function(respuesta){
       $("#cuerpo").empty();
