@@ -133,21 +133,21 @@ function gestor_listas() {
           <div class="w3-button w3-large color-hover-sec w3-right" onclick="modal_show('#modal_eliminar');">
             <i class="far fa-trash-alt"></i>
           </div>
-          <div class="w3-button w3-large color-hover-pri w3-right" onclick="nueva_tarea(<?=$id_usuario?>)">
+          <div class="w3-button w3-large color-hover-pri w3-right" onclick="nueva_tarea()">
             <i class="fas fa-plus"></i>
           </div>
         </div>
       </div>
       <?php   while ($tarea = $reg->fetch(PDO::FETCH_ASSOC)) { ?>
-      <div class="w3-padding w3-large w3-border">
-        <div class="w3-right w3-btn color-hover-sec">
+      <div id="tarea_<?=$tarea['id_tarea'];?>" class="w3-padding w3-large w3-border">
+        <div class="w3-right w3-btn color-hover-sec" onclick="eliminar_tarea(<?=$tarea['id_tarea'];?>)">
           <i class="fa fa-minus-square"></i>
         </div>
-        <div class="w3-right w3-btn color-hover-pri">
+        <div class="w3-right w3-btn color-hover-pri" onclick="editar_tarea(<?=$tarea['id_tarea'];?>)">
           <i class="fas fa-pen-square"></i>
         </div>
-        <span><?=$tarea['nombre_tarea'];?></span> <br>
-        <span class="w3-hide-medium w3-hide-small w3-medium"><?=$tarea['desc_tarea'];?></span>
+        <span class="nombre"><?=$tarea['nombre_tarea'];?></span> <br>
+        <span class="desc w3-hide-medium w3-hide-small w3-medium"><?=$tarea['desc_tarea'];?></span>
       </div>
     <?php } ?>
     </div>
@@ -201,8 +201,8 @@ function obtener_categorias() {
     $reg = datos_ejecutar($sql,$id_lista);
     $valor = $reg->fetch(PDO::FETCH_ASSOC);
   ?>
-  <div id="tarea_><?=$valor['id_tarea']?>" class="w3-padding w3-large w3-border">
-        <div class="w3-right w3-btn color-hover-sec">
+  <div id="tarea_<?=$valor['id_tarea']?>" class="w3-padding w3-large w3-border">
+        <div class="w3-right w3-btn color-hover-sec" onclick="eliminar_tarea(<?=$valor['id_tarea'];?>)">
           <i class="fa fa-minus-square"></i>
         </div>
         <div class="w3-right w3-btn color-hover-pri">
