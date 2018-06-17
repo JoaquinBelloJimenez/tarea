@@ -45,6 +45,8 @@ html, body {
 {background-color:var(--color-black) !important; color:white !important;}
 .background-color-white
 {background-color:var(--color-white);}
+.background-icecream-green
+{background:#cdffc6;}
 
 .color-hover-pri:hover
 {background-color: var(--color-pri) !important; color:white !important;}
@@ -61,6 +63,24 @@ html, body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.background-img-2 {
+  background: url("../img/img_movil.png");
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+.full-viewport{
+  height: 100vh;
+}
+
+.full-height{
+  height: 100%;
+}
+
+.text-align-left{
+  text-align: left;
 }
 
 /* Main */

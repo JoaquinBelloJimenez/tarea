@@ -83,41 +83,44 @@ function editar_tarea(id){
 function guardar_tarea(id){
   var nombre = $('#modal_editar_tarea').find('input.nombre').val();
   var desc = $('#modal_editar_tarea').find('input.desc').val();
-
-  if (id_tarea == 0){
-      $.post("oad/funciones_oad.php",
-      {
-        funcion: "insert",
-        donde: "tareas",
-        que: "(NULL,'"+nombre+"','"+desc+"','"+lista_seleccionada+"')",
-      },
-      function(){
-        $.post("servicios/tareas_admin.php",
+  if (comprobar_longitud(nombre)) {
+    if (comprobar_longitud(dec)) {    
+    if (id_tarea == 0){
+        $.post("oad/funciones_oad.php",
         {
-          tipo: "obtener_ultima_tarea",
-          id_lista: lista_seleccionada,
+          funcion: "insert",
+          donde: "tareas",
+          que: "(NULL,'"+nombre+"','"+desc+"','"+lista_seleccionada+"')",
         },
-        function(respuesta){
-          $('#modal_lista').find('div.w3-row').after(respuesta);
+        function(){
+          $.post("servicios/tareas_admin.php",
+          {
+            tipo: "obtener_ultima_tarea",
+            id_lista: lista_seleccionada,
+          },
+          function(respuesta){
+            $('#modal_lista').find('div.w3-row').after(respuesta);
+          });
         });
-      });
-    } //if id_tarea == 0
-    else {
-      $.post("oad/funciones_oad.php",
-      {
-        funcion: "update",
-        donde: "tareas",
-        que: "nombre_tarea = '"+nombre+"', desc_tarea = '"+desc+"'",
-        comprueba:"tareas.id_tarea ="+id_tarea,
-      },
-      function(){
-        $('#tarea_'+id_tarea).find('span.nombre').text(nombre);
-        $('#tarea_'+id_tarea).find('span.desc').text(desc);
+      } //if id_tarea == 0
+      else {
+        $.post("oad/funciones_oad.php",
+        {
+          funcion: "update",
+          donde: "tareas",
+          que: "nombre_tarea = '"+nombre+"', desc_tarea = '"+desc+"'",
+          comprueba:"tareas.id_tarea ="+id_tarea,
+        },
+        function(){
+          $('#tarea_'+id_tarea).find('span.nombre').text(nombre);
+          $('#tarea_'+id_tarea).find('span.desc').text(desc);
 
-      });
-    };
-    $('#modal_editar_tarea').hide();
-  }
+        });
+      };
+      $('#modal_editar_tarea').hide();
+    }
+}
+}
 
 //Botón para eliminar una tarea
 function eliminar_lista(){

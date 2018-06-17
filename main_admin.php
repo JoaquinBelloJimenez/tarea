@@ -23,6 +23,7 @@
      <link rel="stylesheet" href="css/w3pro.css">
      <link rel="stylesheet" href="css/fontawesome-all.css">
      <link rel="stylesheet" href="css/tarea.css">
+     <link rel="shortcut icon" href="img/favicon.png"/>
      <meta name="viewport" content="width=device-width, user-scalable=no">
      <title>Main_Admin</title>
    </head>

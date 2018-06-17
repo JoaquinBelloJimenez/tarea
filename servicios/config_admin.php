@@ -36,12 +36,7 @@ else{
              <label><b>Contraseña anterior</b><span class="color-sec">*</span></label>
              <input id="vieja_contra" class="w3-input w3-border w3-sand" type="password"></p>
              <div class="w3-center w3-large w3-row">
-               <div class="w3-half w3-padding">
                  <button class="w3-btn background-color-black color-pri" onclick="modificar();">Guardar cambios</button>
-               </div>
-               <div class="w3-half w3-padding">
-                 <button class="w3-btn background-color-black color-sec" onclick="eliminar(<?=$id_usuario?>);">Eliminar usuario</button>
-               </div>
            </div>
          </form>
        </div>

@@ -47,34 +47,31 @@
      <meta charset="utf-8">
      <link rel="stylesheet" href="css/w3pro.css">
      <link rel="stylesheet" href="css/tarea.css">
+     <link rel="shortcut icon" href="img/favicon.png"/>
      <meta name="viewport" content="width=device-width, user-scalable=no">
      <title>TAREA</title>
    </head>
    <body>
 
-     <div class="w3-container background-color-pri full-height">
-
-        <div class="w3-row">
-         <div class="w3-twothird w3-row w3-card-4 w3-display-middle background-color-white">
-           <div class="w3-third background-color-pri-light w3-col w3-padding-64">
-             <div class="w3-container color-white w3-center w3-padding-64">
-               <h2>Entra en TAREA</h2>
-               <h4>Y empieza a organizarte</h4>
+     <div class="w3-container full-height background-icecream-green">
+       <div class="w3-row">
+         <div class="w3-third w3-display-middle">
+           <div class="w3-card">
+             <div class="w3-container background-color-black color-white w3-center">
+               <h2>Entrar en TAREA</h2>
              </div>
-           </div>
-           <div class="w3-twothird w3-padding-32 background-color-white full-height">
+             <div class="w3-container w3-padding background-color-white">
                <form class="w3-container w3-white">
-                 <input class="w3-input w3-padding-16" type="text" name="usuario" placeholder="USUARIO" autofocus>
-                 <input class="w3-input w3-padding-16" type="password" name="contrasenia" placeholder="CONTRASEÑA">
+                 <input class="w3-input w3-margin w3-padding" type="text" name="usuario" placeholder="USUARIO" autofocus>
+                 <input class="w3-input w3-margin w3-padding" type="password" name="contrasenia" placeholder="CONTRASEÑA">
                  <div class="<?= $msg2Class ?> w3-container color-sec">
                    <?= $msg2 ?>
                  </div>
-                 <div class="w3-row">
-                   <div class="w3-third w3-right w3-margin">
+                   <div style="display:flex;justify-content:center;">
                      <h3><input class="w3-btn w3-col background-color-pri-light color-white" type="submit" value="ENTRAR"></h3>
                    </div>
-                 </div>
               </form>
+             </div>
            </div>
          </div>
        </div>

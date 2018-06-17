@@ -101,9 +101,9 @@ function gestor_listas() {
     </div>
     <div class="w3-container w3-padding center">
       <label>Nombre</label>
-      <input class="w3-input w3-border w3-center nombre" type="text" name="" value="" placeholder="Título de tarea">
+      <input class="w3-input w3-border w3-center nombre" type="text" maxlength="20" placeholder="Título de tarea">
       <label>Descripción</label>
-      <input class="w3-input w3-border w3-center desc" type="text" name="" value="" placeholder="Descripión de tarea">
+      <input class="w3-input w3-border w3-center desc" type="text" maxlength="100" placeholder="Descripión de tarea">
     </div>
   </div>
 </div>
@@ -205,7 +205,7 @@ function obtener_categorias() {
         <div class="w3-right w3-btn color-hover-sec" onclick="eliminar_tarea(<?=$valor['id_tarea'];?>)">
           <i class="fa fa-minus-square"></i>
         </div>
-        <div class="w3-right w3-btn color-hover-pri">
+        <div class="w3-right w3-btn color-hover-pri" onclick="editar_tarea(<?=$valor['id_tarea'];?>)">
           <i class="fas fa-pen-square"></i>
         </div>
         <span class="nombre"><?=$valor['nombre_tarea']?></span> <br>
