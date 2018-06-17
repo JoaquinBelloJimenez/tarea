@@ -116,6 +116,7 @@ function guardar_tarea(id){
 
       });
     };
+    $('#modal_editar_tarea').hide();
   }
 
 //Botón para eliminar una tarea
