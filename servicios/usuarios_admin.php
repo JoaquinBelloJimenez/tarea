@@ -36,6 +36,8 @@ function generar_lista_usuarios(){
  ?>
 
  <div class="w3-container">
+   <div class="w3-container">
+   </div>
    <div class="w3-row-padding">
    <?php while ($usuario = $reg->fetch(PDO::FETCH_ASSOC)) {
       #Obtener los valores para funciones

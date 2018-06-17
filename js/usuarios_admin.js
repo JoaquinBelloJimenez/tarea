@@ -27,18 +27,23 @@ obtener_tareas();
     //Tomar los valores de nombre y contraseña
     var nombre = $('#modal_nuevo_usuario').find('input.nombre').val();
     var contra = $('#modal_nuevo_usuario').find('input.contra').val();
-    $.post("oad/funciones_oad.php",
-    {
-      funcion:'insert',
-      donde: 'usuarios',
-      que: "(NULL,'"+nombre+"','"+contra+"',"+usuario_seleccionado+")",
-    },
-    function(){
-      php_usuario_select()
-      $("#usuario_" + usuario_seleccionado).fadeOut("slow", function(){
-        $("#usuario_" + usuario_seleccionado).remove();
-      });
-    });
+    if (comprobar_longitud(nombre)) {
+      if (comprobar_longitud(contra)) {
+        $.post("oad/funciones_oad.php",
+        {
+          funcion:'insert',
+          donde: 'usuarios',
+          nombre:nombre,
+          que: "(NULL,'"+nombre+"','"+contra+"',"+usuario_seleccionado+")",
+        },
+        function(){
+          php_usuario_select()
+          $("#usuario_" + usuario_seleccionado).fadeOut("slow", function(){
+            $("#usuario_" + usuario_seleccionado).remove();
+          });
+        });
+      }
+    }
   };
 
 

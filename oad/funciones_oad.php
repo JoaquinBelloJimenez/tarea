@@ -32,11 +32,29 @@ if (isset($_POST['funcion'])){
           datos_ejecutar($sentencia_insert,$donde,$que);
           break;
     case 'insert':
+    $donde = $_POST['donde'];
+      if ($donde == 'usuarios') {
+        $nombre = $_POST['nombre'];
+        $sentencia_select = datos_select('*','usuarios','WHERE nombre =? ');
+        $reg = datos_ejecutar($sentencia_select,$nombre);
+        #compruebo si existe el usuario
+        if ($reg->rowCount()){
+          return false;
+        }
+        else{
+          $que = $_POST['que'];
+          $sentencia_insert = datos_insert($donde,$que);
+          datos_ejecutar($sentencia_insert,$donde,$que);
+        }
+
+      }
+      else{
         $donde = $_POST['donde'];
         $que = $_POST['que'];
 
         $sentencia_insert = datos_insert($donde,$que);
         datos_ejecutar($sentencia_insert,$donde,$que);
+      }
         break;
     case 'update':
       $donde = $_POST['donde'];

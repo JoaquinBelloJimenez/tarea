@@ -84,7 +84,7 @@ function guardar_tarea(id){
   var nombre = $('#modal_editar_tarea').find('input.nombre').val();
   var desc = $('#modal_editar_tarea').find('input.desc').val();
   if (comprobar_longitud(nombre)) {
-    if (comprobar_longitud(dec)) {    
+    if (comprobar_longitud(desc)) {    
     if (id_tarea == 0){
         $.post("oad/funciones_oad.php",
         {
@@ -119,7 +119,7 @@ function guardar_tarea(id){
       };
       $('#modal_editar_tarea').hide();
     }
-}
+  }
 }
 
 //Botón para eliminar una tarea
